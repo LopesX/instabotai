@@ -5,7 +5,7 @@
 ---
 
 Instagram scraper which scrapes peoples images use machine learning to recognise a face, if face
-is detected it will repost that photo.
+is detected it will repost, Like and Comment that photo.
 
 ## Face detection at work on a live webcam 
 
