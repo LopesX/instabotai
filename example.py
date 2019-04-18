@@ -136,7 +136,7 @@ def InstaImageScraper():
 # While x is less than instaprofiles loop this
 def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
     InstaImageScraper()
-    time.sleep(50)
+    time.sleep(5)
     global x
     while x < len(insta_profiles):
         try:
@@ -148,15 +148,20 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                 scraped_user = insta_profiles[x]
                 json_data = json.load(j)
                 print(json_data)
-                time.sleep(20)
+                time.sleep(10)
                 newstr = (json_data["GraphImages"][0]["display_url"])
+                # Output media id of image
+                media_id = (json_data["GraphImages"][0]["id"])
+                print(media_id)
+                time.sleep(5)
+                print(media_id)
                 print(newstr)
-                time.sleep(15)
+                time.sleep(1)
                 imgUrl = newstr.split('?')[0].split('/')[-1]
                 global instapath
                 instapath = insta_profiles[x] + '/' + imgUrl
                 print(instapath)
-                time.sleep(15)
+                time.sleep(1)
                 global tags
                 # If image have been posted goto next picture
                 print(imgUrl)
@@ -183,8 +188,10 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                     print("There is a Face Detected scraping and posting this image")
                     print(scraped_user)
                     time.sleep(5)
-                print(face_locations)
-                print(instapath)
+                    print("Media Id:")
+                    print(media_id)
+                    print(face_locations)
+                    print(instapath)
 
 
                 # Append username info to csv file
@@ -255,6 +262,12 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 
             # Execute the repost function
             time.sleep(10)
+            bot.api.like(media_id)
+            print("Liked media id: ", media_id)
+            time.sleep(10)
+            bot.comment(media_id, "Wow nice picture, i have just reposted it")
+            print("Commented: ", media_id)
+            time.sleep(5)
             repost_best_photos(bot, users, args.amount)
             print("Posting Instagram")
             os.remove("posted_medias.txt")
@@ -264,7 +277,6 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             x += 1
             time.sleep(5)
             instascraper(bot, new_media_id, path=POSTED_MEDIAS)
-
         x += 1
     x = 0
     time.sleep(5)
