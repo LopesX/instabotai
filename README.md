@@ -48,7 +48,7 @@ Docker run [imageid]
 download link : https://github.com/Kitware/CMake/releases/download/v3.14.1/cmake-3.14.1.zip
 
 ### Install Dblib
-Download dlip ‘.wheel’ file as ur system requirnment (use link bellow)
+Download dlib ‘.wheel’ file as ur system requirnment (use link bellow)
 download link : https://pypi.python.org/simple/dlib/
 
 ```
