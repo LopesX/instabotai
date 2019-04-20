@@ -26,9 +26,9 @@ The script does not work with new accounts. If you know how to fix, send me a me
 
 ## To install script with Docker:
 ```
-git clone https://github.com/reliefs/Instagram-scraper-with-autopost.git
+git clone https://github.com/instagrambot/instabotai.git
 
-cd Instagram-scraper-with-autopost
+cd instabotai/
 
 docker build .
 
@@ -52,11 +52,11 @@ pip install dlib_file_name.wheel
 ### Then run
 
 ``` bash
-git clone https://github.com/instagrambot/Instagram-scraper-with-autopost --recursive
+git clone https://github.com/instagrambot/instabotai.git --recursive
 ```
 
 ```
-cd Instagram-scraper-with-autopost
+cd instabotai/
 ```
 
 ```
@@ -92,9 +92,9 @@ First, make sure you have dlib already installed with Python bindings:
 ### Then do
 
 ```
-git clone https://github.com/reliefs/Instagram-scraper-with-autopost.git
+git clone https://github.com/instagrambot/instabotai.git
 
-cd Instagram-scraper-with-autopost
+cd instabotai
 
 sudo pip install -r requirements.txt
 
