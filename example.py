@@ -287,7 +287,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             print("Posting Instagram")
             os.remove("posted_medias.txt")
             print("Wait 60 - 120 sec for next repost")
-            time.sleep(60|120)
+            time.sleep(1600|1800)
         except:
             print("image set to private", scraped_user)
             x += 1
