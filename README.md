@@ -21,7 +21,6 @@ Demo:
 https://www.instagram.com/siliconeheaven/
 ## Requirements
 * Python 3.6+
-* Min 10-20 profiles inside instaprofiles.txt
 
 The script does not work with new accounts. If you know how to fix, send me a message. 
 
@@ -31,15 +30,9 @@ git clone https://github.com/reliefs/Instagram-scraper-with-autopost.git
 
 cd Instagram-scraper-with-autopost
 
-Create a file called secret.txt inside that folder with the following info:
-yourusername:yourpassword
-Save it
-
-change yourusername to your instagram username in file example.py line 31: InstaUsername = "yourusername"
-
 Docker build .
 
-Docker run [imageid]
+Docker run [imageid] -u username -p password -l therock,kimkardashian
 ```
 
 ## To install script on Windows:
@@ -71,15 +64,7 @@ pip install -r requirements.txt
 ```
 
 ```
-change yourusername to your instagram username in file example.py line 31: InstaUsername = "yourusername"
-```
-
-```
-change instaprofiles.txt to the instagram profiles you wanna scrape
-```
-
-```
-Run: python example.py -u yourusername
+Run: python example.py -u yourusername -p password -l therock,kimkardashian
 ```
 
 And press Enter.
@@ -113,11 +98,7 @@ cd Instagram-scraper-with-autopost
 
 sudo pip install -r requirements.txt
 
-change yourusername to your instagram username in file example.py line 31: InstaUsername = "yourusername"
-
-change instaprofiles.txt to the instagram profiles you wanna scrape
-
-Run: python3 example.py
+Run: python example.py -u yourusername -p password -l therock,kimkardashian
 ```
 
 ## Troubleshoot

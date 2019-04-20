@@ -15,6 +15,8 @@
     The file should contain one username per line!
 """
 import face_recognition
+import instagram_scraper as insta
+from instabot import Bot, utils
 import random
 import argparse
 import os
@@ -23,12 +25,37 @@ import json
 import time
 import csv
 from tqdm import tqdm
-import instagram_scraper as insta
-from instabot import Bot, utils
+
+# Parse arguments from Cli into variables
+parser = argparse.ArgumentParser(add_help=True)
+parser.add_argument('-u', type=str, help="username")
+parser.add_argument('-p', type=str, help="password")
+parser.add_argument('-l', type=str, help="therock,kimkardashian")
+parser.add_argument('-proxy', type=str, help="proxy")
+parser.add_argument('-file', type=str, help="users filename")
+parser.add_argument('-amount', type=int, help="amount", default=1)
+parser.add_argument('users', type=str, nargs='*', help='users')
+args = parser.parse_args()
+
+# Seperate users into list file
+InstaUsername = args.u
+userlist = args.l
 
 
-# Instagram Info
-InstaUsername = "yourusername"
+with open('instaprofiles.txt', 'w') as f:
+    if f:
+        userlist = userlist.replace(",", "\n")
+    f.write(userlist)
+
+
+username = InstaUsername
+
+
+##args
+#parser = argparse.ArgumentParser()
+#parser.add_argument("user", help="Use -u username")
+#parser.parse_args()
+#print args.echo
 
 
 # Open Userdb and put them into a list also write your username to database
@@ -47,10 +74,10 @@ def open_profiles():
     with open('userdb.txt', 'w') as f:
         f.write(userdb)
 
-    global InstaUsername
+    global username
     time.sleep(1)
     with open('username_database.txt', 'w') as f:
-        f.write(InstaUsername)
+        f.write(username)
 
 number_last_photos = 3
 x = 0
@@ -110,15 +137,8 @@ def repost_photo(bot, new_media_id, path=POSTED_MEDIAS):
                         .format(new_media_id, path))
 
 
-parser = argparse.ArgumentParser(add_help=True)
-parser.add_argument('-u', type=str, help="username")
-parser.add_argument('-p', type=str, help="password")
-parser.add_argument('-proxy', type=str, help="proxy")
-parser.add_argument('-file', type=str, help="users filename")
-parser.add_argument('-amount', type=int, help="amount", default=1)
-parser.add_argument('users', type=str, nargs='*', help='users')
-args = parser.parse_args()
 
+# Instagram Info
 
 # Instagram image scraper
 def InstaImageScraper():
@@ -147,7 +167,6 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                 global scraped_user
                 scraped_user = insta_profiles[x]
                 json_data = json.load(j)
-                print(json_data)
                 time.sleep(10)
                 newstr = (json_data["GraphImages"][0]["display_url"])
                 # Output media id of image
@@ -223,8 +242,6 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                         all_lines = (str(all_lines))
                     print("Posted Media")
                     print(last_line)
-                    print("all posted medias")
-                    print(all_lines)
                     # if imgurl is in file username_posted scrape next profile
                     if str(imgUrl) in str(all_lines):
                         try:
@@ -251,8 +268,6 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 
                     print("Posted media")
                     print(last_line)
-                    print("All Posted Medias")
-                    print(all_lines)
                     if imgUrl in all_lines:
                         print("Image found in database scraping next profile")
                         x += 1
@@ -271,7 +286,8 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             repost_best_photos(bot, users, args.amount)
             print("Posting Instagram")
             os.remove("posted_medias.txt")
-            time.sleep(1000|1600)
+            print("Wait 60 - 120 sec for next repost")
+            time.sleep(60|120)
         except:
             print("image set to private", scraped_user)
             x += 1
@@ -287,9 +303,10 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 open_profiles()
 time.sleep(5)
 bot = Bot()
-bot.login(username=InstaUsername)
+#bot.login(username=InstaUsername)
+bot.login(username=args.u, password=args.p)
 time.sleep(10)
-user_id = bot.get_user_id_from_username(InstaUsername)
+user_id = bot.get_user_id_from_username(args.u)
 username = bot.get_username_from_user_id(user_id)
 #print(f"Welcome {username} your userid is {user_id}")
 saveStats = bot.save_user_stats(username)
