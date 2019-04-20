@@ -28,4 +28,4 @@ EXPOSE 800
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["python3", "example.py"]
+ENTRYPOINT ["python3", "example.py"]
