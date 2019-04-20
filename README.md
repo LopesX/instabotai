@@ -21,6 +21,7 @@ Demo:
 https://www.instagram.com/siliconeheaven/
 ## Requirements
 * Python 3.6+
+* Min 20-30 Profiles to scrape or it will repost same image when no new image is posted in list.
 
 The script does not work with new accounts. If you know how to fix, send me a message. 
 
