@@ -30,9 +30,9 @@ git clone https://github.com/reliefs/Instagram-scraper-with-autopost.git
 
 cd Instagram-scraper-with-autopost
 
-Docker build .
+docker build .
 
-Docker run [imageid] -u username -p password -l therock,kimkardashian
+docker run [imageid] -u username -p password -l therock,kimkardashian
 ```
 
 ## To install script on Windows:
