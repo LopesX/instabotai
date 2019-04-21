@@ -33,7 +33,7 @@ cd instabotai/
 
 docker build .
 
-docker run [imageid] -u username -p password -l therock,kimkardashian
+docker run [imageid] -u username -p password -l therock,kimkardashian -t "#like4like#follow4follow"
 ```
 
 ## To install script on Windows:
@@ -65,7 +65,8 @@ pip install -r requirements.txt
 ```
 
 ```
-Run: python example.py -u yourusername -p password -l therock,kimkardashian
+Run: python example.py -u yourusername -p password -l therock,kimkardashian -t "#like4like#follow4follow"
+
 ```
 
 And press Enter.
@@ -99,7 +100,8 @@ cd instabotai
 
 sudo pip install -r requirements.txt
 
-Run: python example.py -u yourusername -p password -l therock,kimkardashian
+Run: python example.py -u yourusername -p password -l therock,kimkardashian -t "#like4like#follow4follow"
+
 ```
 
 ## Troubleshoot
