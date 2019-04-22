@@ -27,11 +27,7 @@ The script does not work with new accounts. If you know how to fix, send me a me
 
 ## To install script with Docker:
 ```
-git clone https://github.com/instagrambot/instabotai.git
-
-cd instabotai/
-
-docker build .
+docker pull reliefs/instabotai
 
 docker run [imageid] -u username -p password -l therock,kimkardashian -t "#like4like#follow4follow"
 ```
