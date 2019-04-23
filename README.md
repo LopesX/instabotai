@@ -56,7 +56,7 @@ pip install -r requirements.txt
 ```
 
 ```
-Run: python example.py -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
+python example.py -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
 
 ```
 
@@ -91,7 +91,7 @@ cd instabotai
 
 sudo pip install -r requirements.txt
 
-Run: python example.py -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
+python example.py -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
 
 ```
 
