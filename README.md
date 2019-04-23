@@ -24,7 +24,7 @@ The script does not work with new accounts. If you know how to fix, send me a me
 ```
 docker pull reliefs/instabotai
 
-docker run [imageid] -u username -p password -l therock,kimkardashian -t "#like4like#follow4follow"
+docker run [imageid] -u username -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
 ```
 
 ## To install script on Windows:
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 ```
 
 ```
-Run: python example.py -u yourusername -p password -l therock,kimkardashian -t "#like4like#follow4follow"
+Run: python example.py -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
 
 ```
 
@@ -91,7 +91,7 @@ cd instabotai
 
 sudo pip install -r requirements.txt
 
-Run: python example.py -u yourusername -p password -l therock,kimkardashian -t "#like4like#follow4follow"
+Run: python example.py -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
 
 ```
 
