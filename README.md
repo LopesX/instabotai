@@ -3,19 +3,14 @@
 ---
 ### [Website](https://instabotai.com/) | [Read the Docs](https://instabotai.github.io/docs/) | [Contribute](https://github.com/instagrambot/docs/blob/master/CONTRIBUTING.md) | [Buy Instagram Expert Marketing](https://www.fiverr.com/hourapp/grow-your-instagram-followers-for-7-days)
 ---
-
-Instagram scraper which scrapes peoples images use machine learning to recognise a face, if face
-is detected it will repost, Like and Comment that photo.
+## Accerlerate your life on Instagram for more targed reposts, likes, comments and followers with AI Face Detection!
+#### Automate your reposting, like, comment, follow and unfollow with AI.
 
 ## Face detection at work on a live webcam 
 
 ![image](https://res.cloudinary.com/practicaldev/image/fetch/s--qdvR8Vl8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)
 
-Script now saves user session and and have CLI session. 
-I also integrated it with instabot api.
-90% of it are junk code I will fix it later.
-
-This script scrapes images from users and then repost them under your Instagram accounts with your own tags.
+This script scrapes images from users and then repost, like and comment their images if face is detected with your own tags.
 
 Demo:
 https://www.instagram.com/siliconeheaven/
