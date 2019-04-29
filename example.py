@@ -282,8 +282,8 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             repost_best_photos(bot, users, args.amount)
             log.info("Reposted: " + media_id)
             os.remove("posted_medias.txt")
-            log.info("Wait 1600 - 1800 sec for next repost")
-            time.sleep(1600|1800)
+            log.info("Wait 2200 - 2600 sec for next repost")
+            time.sleep(2200|2600)
         except:
             log.info("image set to private" + scraped_user)
             x += 1
