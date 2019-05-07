@@ -27,6 +27,9 @@ import csv
 from tqdm import tqdm
 import logging
 
+# Config
+image_comment = "Wow nice picture, i have just reposted it"
+
 # Logging Output default settings
 logging.basicConfig(stream=sys.stdout, format='',
                 level=logging.INFO, datefmt=None)
@@ -273,12 +276,15 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 
             # Execute the repost function
             time.sleep(10)
+            # Like Image
             bot.api.like(media_id)
             log.info("Liked media id: " + media_id)
             time.sleep(10)
-            bot.comment(media_id, "Wow nice picture, i have just reposted it")
+            # Comment on Image
+            bot.comment(media_id, image_comment)
             log.info("Commented: " + media_id)
             time.sleep(5)
+            # Repost image
             repost_best_photos(bot, users, args.amount)
             log.info("Reposted: " + media_id)
             os.remove("posted_medias.txt")

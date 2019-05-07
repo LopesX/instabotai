@@ -1,10 +1,16 @@
 ![image](https://raw.githubusercontent.com/instagrambot/instabot.ai/master/img/banner.png)
-[![Telegram Chat](https://camo.githubusercontent.com/67fd2a1c7649422a770e7d82cb35795c2a8baf32/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636861742532306f6e2d54656c656772616d2d626c75652e737667)](https://t.me/instabotai)
 ---
 ### [Website](https://instabotai.com/) | [Read the Docs](https://instabotai.github.io/docs/) | [Contribute](https://github.com/instagrambot/docs/blob/master/CONTRIBUTING.md) | [Buy Instagram Expert Marketing](https://www.fiverr.com/hourapp/grow-your-instagram-followers-for-7-days)
 ---
 ## Accerlerate your life on Instagram for more targed reposts, likes, comments and followers with AI Face Detection!
 #### Automate your reposting, like, comment, follow and unfollow with AI.
+
+Instabotai is an instagram bot with face detection that uses the undocumented Web API. Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead, it interacts with the API over simple HTTP Requests. It runs on mostsystems.
+[![Telegram Chat](https://camo.githubusercontent.com/67fd2a1c7649422a770e7d82cb35795c2a8baf32/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636861742532306f6e2d54656c656772616d2d626c75652e737667)](https://t.me/instabotai)
+
+## Requirements
+* Python 3.6+
+* Min 20-30 Profiles to scrape or it will repost same image when no new image is posted in list.
 
 ## Face detection at work on a live webcam 
 
@@ -14,9 +20,6 @@ This script scrapes images from users and then repost, like and comment their im
 
 Demo:
 https://www.instagram.com/siliconeheaven/
-## Requirements
-* Python 3.6+
-* Min 20-30 Profiles to scrape or it will repost same image when no new image is posted in list.
 
 The script does not work with new accounts. If you know how to fix, send me a message. 
 
