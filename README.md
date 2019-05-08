@@ -106,6 +106,9 @@ AttributeError: 'module' object has no attribute 'face_recognition_model_v1'
 
 Solution: The version of dlib you have installed is too old. You need version 19.7 or newer. Upgrade dlib.
 
+For Dlib install error run 
+python3 setup.py install --no DLIB_USE_CUDA
+
 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE TERMS AND CONDITIONS FOR COPYING, DISTRIBIUTION AND MODIFICATION.
 
 0. You just do WHAT THE FUCK YOU WANT TO.
