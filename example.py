@@ -1,13 +1,15 @@
 #! /usr/bin/python3
 """
-    Instagram Scraper with autoposter
+    InstabotAI - Instagram Bot With Face Detection
     Intro:
-    This bot autoscrape users from variable insta_profiles
-    and repost them to your instagram, it also save your
-    cookie,session and user stats.
+    This bot autoscrape users from variable output -l
+    if a face is detected it will repost, repost to
+    stories, send DM to users, like and comment that
+    photo. If no face is detected in image it will
+    scrape the next profile in list.
 
     Github:
-    https://github.com/reliefs/Instagram-scraper-with-autopost
+    https://github.com/instagrambot/instabotai
 
     Workflow:
     Repost best photos from users to your account
@@ -17,13 +19,11 @@
 import face_recognition
 import instagram_scraper as insta
 from instabot import Bot, utils
-import random
 import argparse
 import os
 import sys
 import json
 import time
-import csv
 from tqdm import tqdm
 import logging
 
@@ -146,10 +146,6 @@ def repost_photo(bot, new_media_id, path=POSTED_MEDIAS):
         logging.info('Media_id {0} is saved in {1}'
                         .format(new_media_id, path))
 
-
-
-# Instagram Info
-
 # Instagram image scraper
 def InstaImageScraper():
     imgScraper = insta.InstagramScraper(usernames=[insta_profiles[x]],
@@ -158,10 +154,6 @@ def InstaImageScraper():
                                         media_types=['image'])
     imgScraper.scrape()
     print("image scraping is running, please wait 50 seconds.")
-
-
-# Face recognition if face not detected scrape next profile
-
 
 # Instagram manipulate image and repost them
 # While x is less than instaprofiles loop this
@@ -193,7 +185,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                 time.sleep(1)
                 global tags
                 tags = f'''@{insta_profiles[x]} {instagramtags}'''
-                # Execute Face recognition
+                # Execute Face Detection
                 # Locate Face On image scraped
                 image = face_recognition.load_image_file(instapath)
                 face_locations = face_recognition.face_locations(image)
@@ -275,23 +267,34 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                         instascraper(bot, new_media_id, path=POSTED_MEDIAS)
 
             # Execute the repost function
-            time.sleep(10)
+            time.sleep(20)
             # Like Image
             bot.api.like(media_id)
             log.info("Liked media id: " + media_id)
-            time.sleep(10)
+            time.sleep(20)
             # Comment on Image
             bot.comment(media_id, image_comment)
             log.info("Commented: " + media_id)
-            time.sleep(5)
+            time.sleep(20)
             # Repost image
             repost_best_photos(bot, users, args.amount)
             log.info("Reposted: " + media_id)
+            # Repost image as story
+            time.sleep(20)
+            bot.upload_story_photo(instapath)
+            log.info("Photo Uploaded to Story")
+            # Send private DM to user it reposted
+#            bot.send_messages("Hi i just reposted your photo", user_id)
+            time.sleep(20)
+            print(user_id)
+            scraped_user_id = bot.get_user_id_from_username(scraped_user)
+            bot.send_message("hi i just reposted your photo", scraped_user_id)
+            log.info("Private dm send to " + scraped_user_id)
             os.remove("posted_medias.txt")
             log.info("Wait 2200 - 2600 sec for next repost")
             time.sleep(2200|2600)
         except:
-            log.info("image set to private" + scraped_user)
+            log.info("image set to private " + scraped_user)
             x += 1
             time.sleep(5)
             instascraper(bot, new_media_id, path=POSTED_MEDIAS)
