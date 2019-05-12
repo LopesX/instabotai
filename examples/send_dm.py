@@ -269,25 +269,6 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 
             # Execute the repost function
             time.sleep(randint(20, 40))
-            # Like Image
-            bot.api.like(media_id)
-            log.info("Liked media id: " + media_id)
-            time.sleep(randint(20, 50))
-            # Comment on Image
-            bot.comment(media_id, image_comment)
-            log.info("Commented: " + media_id)
-            time.sleep(randint(20, 40))
-            # Repost image
-            repost_best_photos(bot, users, args.amount)
-            log.info("Reposted: " + media_id)
-            # Repost image as story
-            time.sleep(randint(20, 50))
-            bot.upload_story_photo(instapath)
-            log.info("Photo Uploaded to Story")
-            # Send private DM to user it reposted
-#            bot.send_messages("Hi i just reposted your photo", user_id)
-            time.sleep(randint(20, 60))
-            print(user_id)
             scraped_user_id = bot.get_user_id_from_username(scraped_user)
             bot.send_message("hi i just reposted your photo", scraped_user_id)
             log.info("Private dm send to " + scraped_user_id)
