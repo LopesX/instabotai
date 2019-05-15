@@ -278,7 +278,8 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             log.info("Commented: " + media_id)
             time.sleep(randint(20, 40))
             # Repost image
-            repost_best_photos(bot, users, args.amount)
+            #repost_best_photos(bot, users, args.amount)
+            bot.api.upload_photo(instapath,tags)
             log.info("Reposted: " + media_id)
             # Repost image as story
             time.sleep(randint(20, 50))
