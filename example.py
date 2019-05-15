@@ -99,54 +99,6 @@ sys.path.append(os.path.join(sys.path[0], '../'))
 USERNAME_DATABASE = 'username_database.txt'
 POSTED_MEDIAS = 'posted_medias.txt'
 
-
-def repost_best_photos(bot, users, amount=1):
-    medias = get_not_used_medias_from_users(bot, users)
-    medias = sort_best_medias(bot, medias, amount)
-    for media in tqdm(medias, desc='Reposting photos'):
-        repost_photo(bot, media)
-
-
-# Sort best media this is not executed yet
-def sort_best_medias(bot, media_ids, amount=1):
-    best_medias = [bot.get_media_info(media)[0] for media in
-                   tqdm(media_ids, desc='Getting media info')]
-    best_medias = sorted(best_medias, key=lambda x:
-                         (x['like_count'], x['comment_count']), reverse=True)
-    return [best_media['pk'] for best_media in best_medias[:amount]]
-
-
-def get_not_used_medias_from_users(bot, users=None,
-                                   users_path=USERNAME_DATABASE):
-    if not users:
-        users = utils.file(users_path).list
-    users = map(str, users)
-    total_medias = []
-    for user in users:
-        medias = bot.get_user_medias(user, filtration=False)
-        medias = [media for media in medias if not
-                  exists_in_posted_medias(media)]
-        total_medias.extend(medias)
-    return total_medias
-
-
-def exists_in_posted_medias(new_media_id, path=POSTED_MEDIAS):
-    medias = utils.file(path).list
-    return str(new_media_id) in medias
-
-
-def update_posted_medias(new_media_id, path=POSTED_MEDIAS):
-    medias = utils.file(path)
-    medias.append(str(new_media_id))
-    return True
-
-
-def repost_photo(bot, new_media_id, path=POSTED_MEDIAS):
-    if bot.upload_photo(instapath, tags):
-        update_posted_medias(new_media_id, path)
-        logging.info('Media_id {0} is saved in {1}'
-                        .format(new_media_id, path))
-
 # Instagram image scraper
 def InstaImageScraper():
     imgScraper = insta.InstagramScraper(usernames=[insta_profiles[x]],
@@ -292,7 +244,6 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             scraped_user_id = bot.get_user_id_from_username(scraped_user)
             bot.send_message("hi i just reposted your photo", scraped_user_id)
             log.info("Private dm send to " + scraped_user_id)
-            os.remove("posted_medias.txt")
             log.info("Wait 2200 - 2600 sec for next repost")
             time.sleep(randint(2200, 2800))
         except:
