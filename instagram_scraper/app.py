@@ -136,7 +136,7 @@ class InstagramScraper(object):
             with open(self.cookiejar, 'rb') as f:
                 self.session.cookies.update(pickle.load(f))
         self.session.cookies.set('ig_pr', '1')
-        self.rhx_gis = None
+        self.rhx_gis = ""
 
         self.cookies = None
         self.authenticated = False
@@ -231,7 +231,7 @@ class InstagramScraper(object):
         self.session.headers.update({'X-CSRFToken': req.cookies['csrftoken']})
 
         self.session.headers = {'user-agent': CHROME_WIN_UA}
-        self.rhx_gis = self.get_shared_data()['rhx_gis']
+        self.rhx_gis = ""
         self.authenticated = True
 
     def authenticate_with_login(self):
@@ -251,7 +251,7 @@ class InstagramScraper(object):
             self.authenticated = True
             self.logged_in = True
             self.session.headers = {'user-agent': CHROME_WIN_UA}
-            self.rhx_gis = self.get_shared_data()['rhx_gis']
+            self.rhx_gis = ""
         else:
             self.logger.error('Login failed for ' + self.login_user)
 
@@ -632,8 +632,8 @@ class InstagramScraper(object):
                     user['edge_owner_to_timeline_media']['edges']:
                         self.logger.info('User {0} is private'.format(username))
 
-                self.rhx_gis = shared_data['rhx_gis']
-            
+                self.rhx_gis = ""
+
                 self.get_profile_pic(dst, executor, future_to_item, user, username)
 
                 if self.logged_in:
@@ -701,10 +701,10 @@ class InstagramScraper(object):
                 profile_pic_url = next(url for url in profile_pic_urls if url is not None)
             except (KeyError, IndexError, StopIteration):
                 self.logger.warning('Failed to get high resolution profile picture for {0}'.format(username))
-                profile_pic_url = user['profile_pic_url_hd'] 
+                profile_pic_url = user['profile_pic_url_hd']
         else:
                 # If not logged_in take the Low-Resolution profile picture
-                profile_pic_url = user['profile_pic_url_hd'] 
+                profile_pic_url = user['profile_pic_url_hd']
 
         item = {'urls': [profile_pic_url], 'username': username, 'shortcode':'', 'created_time': 1286323200, '__typename': 'GraphProfilePic'}
 
@@ -1002,7 +1002,7 @@ class InstagramScraper(object):
                                         try:
                                             match = re.match(r'bytes (?P<first>\d+)-(?P<last>\d+)/(?P<size>\d+)', response.headers['Content-Range'])
                                             range_file_position = int(match.group('first'))
-                                            if range_file_position != downloaded_before: 
+                                            if range_file_position != downloaded_before:
                                                 raise Exception()
                                             total_length = int(match.group('size'))
                                             media_file.truncate(total_length)
@@ -1164,7 +1164,7 @@ class InstagramScraper(object):
         """Saves the data to a json file."""
         if not os.path.exists(os.path.dirname(dst)):
             os.makedirs(os.path.dirname(dst))
-            
+
         if data:
             output_list = {}
             if os.path.exists(dst):
