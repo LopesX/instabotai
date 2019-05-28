@@ -24,12 +24,16 @@ bot = Bot()
 bot.login(username=args.u, password=args.p,
           proxy=args.proxy)
 
-bot.api.get_pending_inbox()
-for w in bot.api.last_json["inbox"]["threads"]:
-    thread_id = w["thread_id"]
-    username = w["users"][0]["username"]
-    userid = bot.get_user_id_from_username(username)
-    print(thread_id)
-    bot.api.approve_pending_thread(thread_id)
-    time.sleep(20)
-    bot.send_message("Thanks please like all my pictures", userid, thread_id=thread_id)
+while True:
+    try:
+        bot.api.get_pending_inbox()
+        for w in bot.api.last_json["inbox"]["threads"]:
+            thread_id = w["thread_id"]
+            username = w["users"][0]["username"]
+            userid = bot.get_user_id_from_username(username)
+            print(thread_id)
+            bot.api.approve_pending_thread(thread_id)
+            time.sleep(20)
+            bot.send_message("Thanks please like all my pictures", userid, thread_id=thread_id)
+    except:
+        print("Answering the next 20 messages")
