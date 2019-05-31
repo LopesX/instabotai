@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='instabotai',
-    version='1.00.1',
+    version='1.00.2',
     description='Instagram bot scripts for promotion and API python wrapper.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -26,6 +26,9 @@ setup(
         'instagram-scraper>=1.6.1'
         'face_recognition>=1.2.3'
     ],
+    entry_points={
+        'console_scripts': ['instabotai=instabotai.app'],
+    },
     classifiers=[
         # How mature is this project? Common values are
         'Development Status :: 5 - Production/Stable',
