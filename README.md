@@ -2,7 +2,7 @@
 ---
 ### [Website](https://instabotai.com/) | [Read the Docs](https://instabotai.github.io/docs/) | [Contribute](https://github.com/instagrambot/docs/blob/master/CONTRIBUTING.md) | [Buy Instagram Expert Marketing](https://www.fiverr.com/hourapp/grow-your-instagram-followers-for-7-days)
 ---
-# InstabotAi 🤖 
+# InstabotAi
 
 Instabotai is an instagram bot with face detection that uses the undocumented Web API. Instabotai can reupload photo to feed, reupload photo to stories, comment, like and DM users if a face is detected on image.
 Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead, it interacts with the API over simple HTTP Requests. It runs on most systems.
@@ -76,7 +76,6 @@ sudo apt install cmake
 sudo apt install python3-pip
 
 Arch Linux:
-sudo pacman -S python3-dev
 sudo pacman -S cmake
 sudo pacman -S python3-pip
 ```
@@ -110,9 +109,3 @@ Solution: The version of dlib you have installed is too old. You need version 19
 ### For Dlib install error run 
 
 python3 setup.py install --no DLIB_USE_CUDA
-
-DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE TERMS AND CONDITIONS FOR COPYING, DISTRIBIUTION AND MODIFICATION.
-
-0. You just do WHAT THE FUCK YOU WANT TO.
-
-Technology is destructive only in the hands of people who do not realize that they are one and the same process as the universe.
