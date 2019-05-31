@@ -257,20 +257,24 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
     instascraper(bot, new_media_id, path=POSTED_MEDIAS)
 
 
-# All main stuff gets executed
-open_profiles()
-time.sleep(randint(5, 30))
-bot = Bot()
-#bot.login(username=InstaUsername)
-bot.login(username=args.u, password=args.p)
-time.sleep(randint(10, 30))
-user_id = bot.get_user_id_from_username(args.u)
-username = bot.get_username_from_user_id(user_id)
-#print(f"Welcome {username} your userid is {user_id}")
-saveStats = bot.save_user_stats(username)
-users = None
-if args.users:
-    users = args.users
-elif args.file:
-    users = utils.file(args.file).list
-instascraper(bot, users, args.amount)
+
+def main():# All main stuff gets executed
+    open_profiles()
+    time.sleep(randint(5, 30))
+    bot = Bot()
+    #bot.login(username=InstaUsername)
+    bot.login(username=args.u, password=args.p)
+    time.sleep(randint(10, 30))
+    user_id = bot.get_user_id_from_username(args.u)
+    username = bot.get_username_from_user_id(user_id)
+    #print(f"Welcome {username} your userid is {user_id}")
+    saveStats = bot.save_user_stats(username)
+    users = None
+    if args.users:
+        users = args.users
+    elif args.file:
+        users = utils.file(args.file).list
+    instascraper(bot, users, args.amount)
+
+if __name__ == '__main__':
+    main()
