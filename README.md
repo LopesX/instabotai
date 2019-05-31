@@ -16,7 +16,7 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 ### Installation
 Install `instabotai` with:
 ``` bash
-pip install instabotai
+pip install -U instabotai
 ```
 Run `instabotai` with:
 ``` bash
