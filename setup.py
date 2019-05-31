@@ -5,16 +5,15 @@ from setuptools import setup, find_packages
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name='instabotai',
     version='1.00.0',
-
     description='Instagram bot scripts for promotion and API python wrapper.',
     long_description=long_description,
-
+    long_description_content_type="text/markdown",
     author='Steffan Jensen',
     author_email='6hourapp@gmail.com',
     license='Apache Software License 2.0',
