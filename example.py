@@ -230,15 +230,12 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             log.info("Commented: " + media_id)
             time.sleep(randint(20, 40))
             # Repost image
-            #repost_best_photos(bot, users, args.amount)
             bot.api.upload_photo(instapath,tags)
             log.info("Reposted: " + media_id)
             # Repost image as story
             time.sleep(randint(20, 50))
             bot.upload_story_photo(instapath)
             log.info("Photo Uploaded to Story")
-            # Send private DM to user it reposted
-#            bot.send_messages("Hi i just reposted your photo", user_id)
             time.sleep(randint(20, 60))
             print(user_id)
             scraped_user_id = bot.get_user_id_from_username(scraped_user)
@@ -261,12 +258,10 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 open_profiles()
 time.sleep(randint(5, 30))
 bot = Bot()
-#bot.login(username=InstaUsername)
 bot.login(username=args.u, password=args.p)
 time.sleep(randint(10, 30))
 user_id = bot.get_user_id_from_username(args.u)
 username = bot.get_username_from_user_id(user_id)
-#print(f"Welcome {username} your userid is {user_id}")
 saveStats = bot.save_user_stats(username)
 users = None
 if args.users:
