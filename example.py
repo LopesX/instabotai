@@ -235,8 +235,8 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             log.info("Reposted: " + media_id)
             # Repost image as story
             time.sleep(randint(20, 50))
-     #       bot.upload_story_photo(instapath)
-     #       log.info("Photo Uploaded to Story")
+            bot.upload_story_photo(instapath)
+            log.info("Photo Uploaded to Story")
             # Send private DM to user it reposted
 #            bot.send_messages("Hi i just reposted your photo", user_id)
             time.sleep(randint(20, 60))
