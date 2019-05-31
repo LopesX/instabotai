@@ -1,3 +1,4 @@
 instabot
+instagram-scraper
 face_recognition
 tqdm
