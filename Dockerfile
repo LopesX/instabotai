@@ -15,7 +15,7 @@ COPY . /app
 # Run Cmake
 
 RUN apt-get update -y
-RUN apt-get update
+RUN apt-get upgrade -y
 RUN apt-get install -y cmake
 
 # Install any needed packages specified in requirements.txt
