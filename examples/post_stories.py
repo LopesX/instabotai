@@ -277,7 +277,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 #            bot.send_messages("Hi i just reposted your photo", user_id)
             time.sleep(randint(20, 60))
             print(user_id)
-            os.remove("posted_medias.txt")
+#            os.remove("posted_medias.txt")
             log.info("Wait 2200 - 2600 sec for next repost")
             time.sleep(randint(2200, 2800))
         except:
