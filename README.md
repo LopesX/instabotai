@@ -30,7 +30,7 @@ instabotai -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like
 This script scrapes images from users and then repost, like and comment their images if face is detected with your own tags.
 
 Demo:
-https://www.instagram.com/siliconeheaven/
+https://www.instagram.com/maskofshiva
 
 The script does not work with new accounts. If you know how to fix, send me a message. 
 
