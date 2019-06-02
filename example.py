@@ -137,7 +137,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                 logging.info("Found Instagram Path to Image: " + instapath)
                 time.sleep(randint(1, 5))
                 global tags
-                tags = f'''@{insta_profiles[x]} {instagramtags}'''
+                tags = "@" + insta_profiles[x] + " " + instagramtags
                 # Execute Face Detection
                 # Locate Face On image scraped
                 image = face_recognition.load_image_file(instapath)
@@ -233,9 +233,9 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             bot.api.upload_photo(instapath,tags)
             log.info("Reposted: " + media_id)
             # Repost image as story
-            time.sleep(randint(20, 50))
-            bot.upload_story_photo(instapath)
-            log.info("Photo Uploaded to Story")
+          #  time.sleep(randint(20, 50))
+          #  bot.upload_story_photo(instapath)
+          #  log.info("Photo Uploaded to Story")
             time.sleep(randint(20, 60))
             print(user_id)
             scraped_user_id = bot.get_user_id_from_username(scraped_user)
