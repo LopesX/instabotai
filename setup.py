@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='instabotai',
-    version='1.00.27',
+    version='1.00.28',
     description='Instagram bot scripts for promotion and API python wrapper.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -41,6 +41,7 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
