@@ -8,11 +8,11 @@ WORKDIR /app
 COPY . /app
 
 # Run Cmake
-
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y cmake
 RUN apt-get install -y python3-pip
+
 # Install any needed packages specified in requirements.txt
 RUN pip3 install -U instabotai
 
