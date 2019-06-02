@@ -242,7 +242,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             bot.send_message("hi i just reposted your photo", scraped_user_id)
             log.info("Private dm send to " + scraped_user_id)
             log.info("Wait 2200 - 2600 sec for next repost")
-            time.sleep(randint(2200, 2800))
+            time.sleep(randint(3200, 3800))
         except:
             log.info("image set to private " + scraped_user)
             x += 1
