@@ -24,7 +24,7 @@ setup(
         'tqdm>=4.30.0',
         'instabot>=0.42.0',
         'instagram-scraper>=1.6.1'
-        'face_recognition'
+        'face_recognition>=1.2.3'
     ],
     entry_points={
         'console_scripts': ['instabotai=instabotai:main'],
