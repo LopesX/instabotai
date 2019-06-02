@@ -160,29 +160,29 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 
                 # Append username info to csv file
                 try:
-                    with open(f'{username}.tsv', 'a+') as f:
+                    with open(username + '.tsv', 'a+') as f:
                         f.write(str(saveStats))
-                    with open(f'{username}.tsv', 'r') as f:
+                    with open(username + '.tsv', 'r') as f:
                         last_line = f.readlines()[-2].replace("False", "")
                     log.info("Date - Time - Followers - Following - Posts")
                     log.info(last_line)
 
                 # Write username tsv file if it does not exist
                 except:
-                    with open(f'{username}.tsv', 'w+') as f:
+                    with open(username + '.tsv', 'w+') as f:
                         f.write(str(saveStats))
-                    with open(f'{username}.tsv', 'r') as f:
+                    with open(username + '.tsv', 'r') as f:
                         last_line = f.readlines()[-1]
                     log.info("Date - Time - Followers - Following - Posts")
                     log.info(last_line)
 
                 # Append username info to csv file
                 try:
-                    with open(f'{username}_posted.tsv', 'a+') as f:
+                    with open(username + '_posted.tsv', 'a+') as f:
                         f.write(str(imgUrl + "\n"))
-                    with open(f'{username}_posted.tsv', 'r') as f:
+                    with open(username + '_posted.tsv', 'r') as f:
                         last_line = f.readlines()[-1]
-                    with open(f'{username}_posted.tsv', 'r') as f:
+                    with open(username + '_posted.tsv', 'r') as f:
                         all_lines = f.readlines()[0:-2]
                         all_lines = (str(all_lines))
                     log.info("Posted Media")
@@ -204,9 +204,9 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 
                 # Write username tsv file if it does not exist
                 except:
-                    with open(f'{username}_posted.tsv', 'a+') as f:
+                    with open(username + '_posted.tsv', 'a+') as f:
                         f.write(str(imgUrl + "\n"))
-                    with open(f'{username}_posted.tsv', 'r') as f:
+                    with open(username + '_posted.tsv', 'r') as f:
                         last_line = str(f.readlines()[-1])
                         all_lines = str(f.readlines()[0:-2])
 
