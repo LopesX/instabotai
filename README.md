@@ -27,7 +27,7 @@ instabotai -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like
 ``` bash
 docker pull reliefs/instabotai
 
-docker run reliefs/instabotai -u username -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
+docker run reliefs/instabotai -u username -p password -l josephineskriver,wolfiecindy -t "#tag1#tag2"
 ```
 
 ## Face detection at work on a live webcam 
