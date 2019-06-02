@@ -1,8 +1,3 @@
-# Create a file called secret.txt with 
-# yourusername:password
-# And save it then run 
-# docker build .
-# Docker run [IMAGE]
 # Use an official Python runtime as a parent image
 FROM python:3.7.2
 
