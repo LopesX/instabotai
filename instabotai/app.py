@@ -137,7 +137,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
                 logging.info("Found Instagram Path to Image: " + instapath)
                 time.sleep(randint(1, 5))
                 global tags
-                tags = f'''@{insta_profiles[x]} {instagramtags}'''
+                tags = "@" + insta_profiles[x] + " " + instagramtags
                 # Execute Face Detection
                 # Locate Face On image scraped
                 image = face_recognition.load_image_file(instapath)
