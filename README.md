@@ -13,7 +13,7 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 * Python 3.6+
 * Min 20-30 Profiles to scrape or it will repost same image when no new image is posted in list.
 
-### Installation
+### Installation with PIP
 Install `instabotai` with:
 ``` bash
 pip install -U instabotai
@@ -21,6 +21,13 @@ pip install -U instabotai
 Run `instabotai` with:
 ``` bash
 instabotai -u yourusername -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
+```
+
+### Installation with Docker
+``` bash
+docker pull reliefs/instabotai
+
+docker run reliefs/instabotai -u username -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
 ```
 
 ## Face detection at work on a live webcam 
@@ -33,13 +40,6 @@ Demo:
 https://www.instagram.com/maskofshiva
 
 The script does not work with new accounts. If you know how to fix, send me a message. 
-
-## To install script with Docker:
-```
-docker pull reliefs/instabotai
-
-docker run reliefs/instabotai -u username -p password -l josephineskriver,wolfiecindy -t "#like4like#follow4follow"
-```
 
 ## To install script on Windows:
 
