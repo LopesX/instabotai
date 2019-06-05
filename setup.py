@@ -22,7 +22,7 @@ setup(
     keywords=['instagram', 'bot', 'api', 'wrapper'],
     install_requires=[
         'tqdm>=4.30.0',
-        'instabot>=0.42.0',
+        'instabot>=0.44.0',
         'instagram-scraper>=1.6.1',
         'face_recognition>=1.2.3'
     ],
