@@ -2,7 +2,7 @@
     Instabotai Like all comments example
     Workflow:
         Like All replied image comments pictures.
-        Find Feed images -> find x image_id -> Like image comments
+        Find Feed images -> find x image_id -> Like x image comments
 """
 
 import argparse
