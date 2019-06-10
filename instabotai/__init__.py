@@ -1,1 +1,1 @@
-from instabotai.app import *
+from app import *
