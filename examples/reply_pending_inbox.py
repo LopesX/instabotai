@@ -23,7 +23,6 @@ args = parser.parse_args()
 bot = Bot()
 bot.login(username=args.u, password=args.p,
           proxy=args.proxy)
-
 while True:
     try:
         bot.api.get_pending_inbox()
@@ -33,7 +32,8 @@ while True:
             userid = bot.get_user_id_from_username(username)
             print(thread_id)
             bot.api.approve_pending_thread(thread_id)
-            time.sleep(20)
-            bot.send_message("Thanks please like all my pictures", userid, thread_id=thread_id)
+            time.sleep(125|155)
+            bot.send_message("Thanks please like all my pictures and follow me", userid, thread_id=thread_id)
     except:
-        print("Answering the next 20 messages")
+        pass
+
