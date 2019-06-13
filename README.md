@@ -8,6 +8,9 @@
 Instabotai is an instagram bot with face detection that uses the undocumented Web API. Instabotai can reupload photo to feed, reupload photo to stories, comment, like and DM users if a face is detected on image.
 Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead, it interacts with the API over simple HTTP Requests. It runs on most systems.
 
+# Demo:
+https://www.instagram.com/japanheaven
+
 ## Requirements
 * Python 3.6+
 * Min 20-30 Profiles to scrape or it will repost same image when no new image is posted in list.
@@ -34,11 +37,6 @@ docker run reliefs/instabotai -u username -p password -l josephineskriver,wolfie
 ![image](https://res.cloudinary.com/practicaldev/image/fetch/s--qdvR8Vl8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)
 
 This script scrapes images from users and then repost, like and comment their images if face is detected with your own tags.
-
-Demo:
-https://www.instagram.com/maskofshiva
-
-The script does not work with new accounts. If you know how to fix, send me a message. 
 
 ## To install script on Windows:
 
