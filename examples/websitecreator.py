@@ -41,7 +41,7 @@ def InstaImageScraper():
     print("image scraping is running, please wait 50 seconds.")
 
 
-#InstaImageScraper()
+InstaImageScraper()
 
 def face_detection(path_to_image):
     ''' Face Detection for image '''
