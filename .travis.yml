@@ -13,18 +13,9 @@ matrix:
 
 install:
   - pip install -r requirements.txt
-  - pip install pytest-cov
-  - pip install codecov
-
 script:
- - pyflakes instabot tests examples
  - pycodestyle --ignore=E501 instabot tests
  - pycodestyle --ignore=E402,E501 examples
- - py.test --cov=instabot --cov-report=xml
- - codecov
-
-after_success:
- - if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then bumpversion --verbose minor && bash push.sh; fi
 
 branches:
   only:
