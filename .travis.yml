@@ -13,10 +13,15 @@ matrix:
 
 install:
   - pip install -r requirements.txt
-  
+  - pip install pytest-cov
+  - pip install codecov
+
 script:
-  - pytest
-  
+ - python example.py
+
+after_success:
+ - if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then bumpversion --verbose minor && bash push.sh; fi
+
 branches:
   only:
     - master
