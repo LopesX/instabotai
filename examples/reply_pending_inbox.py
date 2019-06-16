@@ -27,7 +27,6 @@ while True:
     try:
         bot.api.get_pending_inbox()
         for w in bot.api.last_json["inbox"]["threads"]:
-            print(w)
             thread_id = w["thread_id"]
             username = w["users"][0]["username"]
             full_name = w["users"][0]["full_name"]
