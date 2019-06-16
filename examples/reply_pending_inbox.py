@@ -34,7 +34,7 @@ while True:
             print(thread_id)
             bot.api.approve_pending_thread(thread_id)
             time.sleep(25|55)
-            bot.send_message("Thanks " +str(full_name) +  ", please like all my pictures and follow me", userid, thread_id=thread_id)
+            bot.send_message("Thanks " +str(full_name) +  ", please comments and like all my pictures also follow me :)", userid, thread_id=thread_id)
     except:
         time.sleep(100)
         pass
