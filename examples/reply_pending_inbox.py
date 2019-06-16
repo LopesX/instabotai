@@ -2,7 +2,7 @@
     instabotai example
     Workflow:
         Reply to all pending messages in inbox.
-        Find all pending messages in inbox -> Accept messages -> reply to message.
+        Find all pending messages in inbox -> Accept messages -> reply to message with their full name in message.
 """
 
 import argparse
@@ -27,14 +27,15 @@ while True:
     try:
         bot.api.get_pending_inbox()
         for w in bot.api.last_json["inbox"]["threads"]:
+            print(w)
             thread_id = w["thread_id"]
             username = w["users"][0]["username"]
+            full_name = w["users"][0]["full_name"]
             userid = bot.get_user_id_from_username(username)
             print(thread_id)
             bot.api.approve_pending_thread(thread_id)
             time.sleep(25|55)
-            bot.send_message("Thanks " +str(username) +  ", please like all my pictures and follow me", userid, thread_id=thread_id)
+            bot.send_message("Thanks " +str(full_name) +  ", please like all my pictures and follow me", userid, thread_id=thread_id)
     except:
         time.sleep(100)
         pass
-
