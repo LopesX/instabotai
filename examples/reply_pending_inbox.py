@@ -1,5 +1,5 @@
 """
-    instabot example
+    instabotai example
     Workflow:
         Reply to all pending messages in inbox.
         Find all pending messages in inbox -> Accept messages -> reply to message.
@@ -32,8 +32,9 @@ while True:
             userid = bot.get_user_id_from_username(username)
             print(thread_id)
             bot.api.approve_pending_thread(thread_id)
-            time.sleep(125|155)
-            bot.send_message("Thanks please like all my pictures and follow me", userid, thread_id=thread_id)
+            time.sleep(25|55)
+            bot.send_message("Thanks " +str(username) +  ", please like all my pictures and follow me", userid, thread_id=thread_id)
     except:
+        time.sleep(100)
         pass
 
