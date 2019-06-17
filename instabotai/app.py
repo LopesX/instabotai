@@ -287,7 +287,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
 open_profiles()
 random_sleep(5, 10)
 bot = Bot()
-bot.login(username=args.u, password=args.p)
+bot.login(username=args.u, password=args.p, proxy=args.proxy)
 random_sleep(5, 10)
 user_id = bot.get_user_id_from_username(args.u)
 username = bot.get_username_from_user_id(user_id)
