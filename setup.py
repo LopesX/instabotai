@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='instabotai',
-    version='1.00.30',
+    version='1.00.40',
     description='Instagram bot scripts for promotion and API python wrapper.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -22,7 +22,7 @@ setup(
     keywords=['instagram', 'bot', 'api', 'wrapper'],
     install_requires=[
         'tqdm>=4.30.0',
-        'instabot>=0.44.0',
+        'instabot>=0.49.0',
         'instagram-scraper>=1.6.1',
         'face_recognition>=1.2.3'
     ],
