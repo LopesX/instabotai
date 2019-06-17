@@ -10,7 +10,7 @@
 
 # InstabotAi
 
-Instabotai is an instagram bot with face detection that uses the undocumented Web API. Instabotai can reupload photo to feed, reupload photo to stories, comment, like and DM users if a face is detected on image.
+Instabotai is an instagram bot with face detection that uses the undocumented Web API. Instabotai can reupload photo to feed, reupload photo to stories, watch stories, comment, like and DM users if a face is detected on image.
 Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead, it interacts with the API over simple HTTP Requests. It runs on most systems.
 
 # Demo:
