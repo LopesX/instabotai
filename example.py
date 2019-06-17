@@ -138,7 +138,7 @@ def watch_stories():
             ]
 
             # WATCH USERS STORIES
-            if bot.watch_users_reels(liker_ids):
+            if bot.watch_users_reels(liker_ids[:15]):
                 print("Total stories viewed: %d" % bot.total["stories_viewed"])
 
             # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
