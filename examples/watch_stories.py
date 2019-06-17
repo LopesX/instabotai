@@ -70,7 +70,7 @@ while True:
         ]
 
         # WATCH USERS STORIES
-        if bot.watch_users_reels(liker_ids[:25]):
+        if bot.watch_users_reels(liker_ids[:20]):
             print("Total stories viewed: %d" % bot.total["stories_viewed"])
 
         # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
