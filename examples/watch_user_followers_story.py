@@ -42,7 +42,7 @@ bot.login(username=args.u, password=args.p,
 if len(sys.argv) >= 3:
     print(
         """
-            Going to get '%s' likers and watch their stories (and stories of their likers too).
+            Going to get '%s' followers and watch their stories.
         """ % (args.users)
     )
     user_to_get_likers_of = bot.convert_to_user_id(args.users)
@@ -55,9 +55,9 @@ while True:
             print("Can't get followers of user_id=%s" % current_user_id)
 
         # GET USER FROM FOLLOWERS
-        scraped_user = random.sample(bot.api.last_json["users"], 15)
+        scraped_user = random.sample(bot.api.last_json["users"], 100)
         user_ids = [
-            str(u["pk"]) for u in scraped_user
+            str(u["pk"]) for u in scraped_user if not u["is_private"] and "latest_reel_media" in u
         ]
         # WATCH USERS STORIES
         if bot.watch_users_reels(user_ids):
