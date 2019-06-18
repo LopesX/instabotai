@@ -7,6 +7,9 @@
     Dependencies:
         pip install -U instabot
 
+    How to use:
+    python watch_stories.py -u username -p password kimkardashian
+
     Notes:
         You can change file and add there your comments.
 """
@@ -27,28 +30,22 @@ parser = argparse.ArgumentParser(add_help=True)
 parser.add_argument('-u', type=str, help="username")
 parser.add_argument('-p', type=str, help="password")
 parser.add_argument('-proxy', type=str, help="proxy")
+parser.add_argument('users', type=str, nargs='+', help='users')
 args = parser.parse_args()
+args.users = ''.join(args.users)
 
 bot = Bot()
 bot.login(username=args.u, password=args.p,
           proxy=args.proxy)
-args.u = "demirosemawby"
 
-if len(sys.argv) >= 2:
+
+if len(sys.argv) >= 3:
     print(
         """
             Going to get '%s' likers and watch their stories (and stories of their likers too).
-        """ % (args.u)
+        """ % (args.users)
     )
-    user_to_get_likers_of = bot.convert_to_user_id(args.u)
-else:
-    print(
-        """
-            Going to get your likers and watch their stories (and stories of their likers too).
-            You can specify username of another user to start (by default we use you as a starting point).
-        """
-    )
-    user_to_get_likers_of = bot.user_id
+    user_to_get_likers_of = bot.convert_to_user_id(args.users)
 
 current_user_id = user_to_get_likers_of
 while True:
