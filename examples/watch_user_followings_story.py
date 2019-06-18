@@ -55,9 +55,9 @@ while True:
             print("Can't get followers of user_id=%s" % current_user_id)
 
         # GET USER FROM FOLLOWERS
-        scraped_user = random.sample(bot.api.last_json["users"], 15)
+        scraped_user = random.sample(bot.api.last_json["users"], 45)
         user_ids = [
-            str(u["pk"]) for u in scraped_user
+            str(u["pk"]) for u in scraped_user if not u["is_private"] and "latest_reel_media" in u
         ]
         # WATCH USERS STORIES
         if bot.watch_users_reels(user_ids):
