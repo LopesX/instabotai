@@ -1,5 +1,5 @@
 """
-    Watch user followings stories!
+    Watch user likers stories!
     This script could be very useful to attract someone's audience to your account.
 
     If you will not specify the user_id, the script will use your likers as targets.
@@ -8,7 +8,7 @@
         pip install -U instabot
 
     How to use:
-    python watch_user_followings_story.py -u username -p password kimkardashian
+    python watch_stories.py -u username -p password kimkardashian
 
     Notes:
         You can change file and add there your comments.
@@ -55,11 +55,12 @@ while True:
             print("Can't get followers of user_id=%s" % current_user_id)
 
         # GET USER FROM FOLLOWERS
-        scraped_user = random.choice(bot.api.last_json["users"])
-        user_id = scraped_user["pk"]
-
+        scraped_user = random.sample(bot.api.last_json["users"], 15)
+        user_ids = [
+            str(u["pk"]) for u in scraped_user
+        ]
         # WATCH USERS STORIES
-        if bot.watch_users_reels(user_id):
+        if bot.watch_users_reels(user_ids):
             print("Total stories viewed: %d" % bot.total["stories_viewed"])
 
 
