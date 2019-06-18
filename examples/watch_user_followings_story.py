@@ -55,7 +55,7 @@ while True:
             print("Can't get followers of user_id=%s" % current_user_id)
 
         # GET USER FROM FOLLOWERS
-        scraped_user = random.sample(bot.api.last_json["users"], 45)
+        scraped_user = random.sample(bot.api.last_json["users"], 25)
         user_ids = [
             str(u["pk"]) for u in scraped_user if not u["is_private"] and "latest_reel_media" in u
         ]
@@ -68,4 +68,4 @@ while True:
         # If something went wrong - sleep long and start again
         print("Exception:", str(e))
         current_user_id = user_to_get_likers_of
-        time.sleep(10 * random.random() + 10)
+        time.sleep(30 * random.random() + 30)
