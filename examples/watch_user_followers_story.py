@@ -68,4 +68,4 @@ while True:
         # If something went wrong - sleep long and start again
         print("Exception:", str(e))
         current_user_id = user_to_get_likers_of
-        time.sleep(10 * random.random() + 10)
+        time.sleep(30 * random.random() + 30)
