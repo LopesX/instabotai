@@ -8,7 +8,7 @@
         pip install -U instabot
 
     How to use:
-    python watch_stories.py -u username -p password kimkardashian
+    python watch_user_followings_story.py -u username -p password kimkardashian
 
     Notes:
         You can change file and add there your comments.
