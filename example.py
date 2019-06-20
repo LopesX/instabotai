@@ -331,7 +331,7 @@ def instascraper(bot, new_media_id, path=POSTED_MEDIAS):
             send_dm(scraped_user_id)
             random_sleep(2,5)
 #            watch_stories()
-#            random_sleep(3200, 3800)
+            random_sleep(3200, 3800)
         except:
             log.info("image set to private " + scraped_user)
             x += 1
