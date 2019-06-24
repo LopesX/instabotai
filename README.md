@@ -121,3 +121,7 @@ Solution: The version of dlib you have installed is too old. You need version 19
 ### For Dlib install error run 
 
 python3 setup.py install --no DLIB_USE_CUDA
+
+### Cmake path is not found
+
+http://tulip.labri.fr/TulipDrupal/?q=node/1081
