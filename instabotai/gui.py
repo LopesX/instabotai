@@ -105,7 +105,7 @@ def clicked():
     lbl.grid(column=5, row=0)
     global running
     running = True
-    bot2.main(usernames, passwords, profiles, instagramtags)
+    bot.main(usernames, passwords, profiles, instagramtags)
 
 def stopped():
     lbl = Label(window, text="Bot stopped")
