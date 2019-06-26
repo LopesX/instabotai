@@ -16,11 +16,12 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 # Demo:
 https://www.instagram.com/japanheaven
 
-# For GUI Run:
+# For GUI:
+Run
 ``` bash
 python gui.py
 ```
-![image](https://res.cloudinary.com/practicaldev/image/fetch/s--qdvR8Vl8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)
+![image](https://instabotai.com/img/gui.png)
 
 ## Requirements
 * Python 3.6+
