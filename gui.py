@@ -1,3 +1,3 @@
-from instabotai import gui, bot2
+from instabotai import gui, bot
 
 gui.main()
