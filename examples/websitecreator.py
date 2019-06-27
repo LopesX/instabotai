@@ -3,33 +3,37 @@ import logging
 import time
 from random import randint
 import instagram_scraper as insta
-from instabot import Bot, utils
-import os
 import json
 import sys
 
 # Logging Output default settings
 logging.basicConfig(stream=sys.stdout, format='',
-                level=logging.INFO, datefmt=None)
+                    level=logging.INFO, datefmt=None)
 log = logging.getLogger(__name__)
+
 
 def random_sleep(number1, number2):
     ''' Random sleep between two numbers'''
     time_sleep = time.sleep(randint(number1, number2))
     return time_sleep
 
-number_last_photos = 10
+
+''' number of last photos scraped '''
+number_last_photos = 20
 
 
 def Convert(string):
-	li = list(string.split(","))
-	return li
+    li = list(string.split(","))
+    return li
+
 
 # Scraping profiles
 profiles = "abigailratchford,anastasiya_kvitko,marona_tanner"
 profiles = Convert(profiles)
 
 x = 0
+
+
 def InstaImageScraper():
     ''' Scrape image on profiles '''
     imgScraper = insta.InstagramScraper(usernames=profiles,
@@ -38,10 +42,11 @@ def InstaImageScraper():
                                         media_types=['image'])
     imgScraper.scrape()
 
-    print("image scraping is running, please wait 50 seconds.")
+    print("Images has been scraped")
 
 
 InstaImageScraper()
+
 
 def face_detection(path_to_image):
     ''' Face Detection for image '''
@@ -51,8 +56,8 @@ def face_detection(path_to_image):
     if not face_locations:
         log.info("There is no Face Detected scraping next profile")
         log.info(profiles[x])
-        random_sleep(1, 6)
-           
+        random_sleep(1, 2)
+
     else:
         log.info("There is a Face Detected scraping and posting this image")
         log.info(profiles[x])
@@ -64,43 +69,45 @@ def face_detection(path_to_image):
 
 
 def htmloutput():
-    f = open("index2" + ".html","a+")
+    ''' open profilename in a profilename.html and create a website '''
+    f = open(profiles[x] + ".html", "a+")
     f.write(
     f"""
-<html>
-	<title>{profiles[x]} - Rank babes - Hottest babes online</title>
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body><div class="header"><div class="header-social-nav">
-			<a href="http://instagram.com/japanheaven"><img class="icons"
+    <html>
+    <title>{profiles[x]} - Rank babes - Hottest babes online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <body><div class="header"><div class="header-social-nav">
+    <a href="http://instagram.com/japanheaven"><img class="icons"
     src="img/icons/instagram.svg"
     alt="instagram"
     height="25px"
     width="25px"
     /></a>
-	<img class="icons"
+    <img class="icons"
     src="img/icons/facebook.svg"
     alt="facebook"
     height="25px"
     width="25px"
     /></div>
- <link rel="stylesheet" href="style.css">
-		<h1><center>Rank Babes - Hottest babes online</center></h1>
-		<div class="header-menu">
-			<center>
-				<a href ="scandinavia/">SCANDINAVIA</a> <a href ="russia/">RUSSIA</a> AFRICA INDIAN JAPANESE KOREAN</center>
-	</div></div>
-	<p>
-		<div class "main">
-			<center>
-		<h1>{profiles[x]}</h1><p>
-		<a href="https://www.instagram.com/p/ByqJI_EgpOh/"><img class="image" src="{instagram_image_link}"></img></a>
-		<p>
-		</center></div>
+    <link rel="stylesheet" href="style.css">
+    <h1><center>Rank Babes - Hottest babes online</center></h1>
+    <div class="header-menu">
+    <center>
+    <a href ="scandinavia/">SCANDINAVIA</a> <a href ="russia/">RUSSIA</a> AFRICA INDIAN JAPANESE KOREAN</center>
+    </div></div>
+    <p>
+    <div class "main">
+    <center>
+    <h1>{profiles[x]}</h1><p>
+    <a href="https://www.instagram.com/p/ByqJI_EgpOh/"><img class="image" src="{instagram_image_link}"></img></a>
+    <p>
+    </center></div>
 
 </body>
 </html>
-   """
-)
+   """)
+
+
 print("Created " + profiles[x] + ".html")
 while x < len(profiles[x]):
     try:
@@ -117,9 +124,10 @@ while x < len(profiles[x]):
                     instagram_image_location = str(profiles[x]) + '/' + instagram_image_name
                     face_detection(instagram_image_location)
                     u += 1
-            except: 
-                pass
-    except:
+            except Exception as e:
+                print(e)
+    except Exception as e:
+        print(e)
         pass
     print("test")
     x += 1
