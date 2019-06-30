@@ -46,12 +46,12 @@ def like_self_media_comments():
         try:
             for medias in bot.get_total_user_medias(bot.user_id):
                 bot.like_media_comments(medias)
-                print("sleeping for 60 seconds")
-                time.sleep(60)
+                print("sleeping for 120 seconds")
+                time.sleep(120)
                 x += 1
                 print("Like comments on next picture")
         except:
-            time.sleep(60)
+            time.sleep(120)
             print("Like comments on next picture")
             like_self_media_comments()
 
