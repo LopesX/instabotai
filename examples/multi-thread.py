@@ -23,7 +23,7 @@ def watchstories():
         try:
             time.sleep(10)
             # GET USER FEED
-            if not bot.api.get_user_feed(current_user_id):
+            if not bot.api.get_user_feed(bot.user_id):
                 bot.logger.info("Can't get feed of user_id=%s" % current_user_id)
 
             # GET MEDIA LIKERS
