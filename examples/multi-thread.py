@@ -17,28 +17,45 @@ bot = Bot()
 bot.login(username=args.u, password=args.p,
           proxy=args.proxy)
 
+
 def watchstories():
-    number = 0
     while True:
-        hashtags = ["instagood", "love","photooftheday","fashion","beautiful","happy","cute","like4like","followme","picoftheday","follow","me","summer","art","instadaily","friends","repost","nature","girl","fun","style","smile","food","instalike","follow4follow","igers","life","beauty","amazing","instagram","instagood","photooftheday","fashion","beautiful","happy","cute","tbt","like4like","followme","picoftheday","follow","me","selfie","summer","art","instadaily","friends","repost","nature","girl","fun","style","smile","food","instalike","family","travel","likeforlike","fitness","follow4follow","igers","tagsforlikes","nofilter","life","beauty","amazing","instagram","photography","photo","vscocam","sun","music","followforfollow","beach","ootd","bestoftheday","sunset","dog","sky","makeup","foodporn","f4f","hair","pretty","cat","model","swag","motivation","girls","party","baby","cool","gym","lol","design","instapic","funny","healthy","christmas","night","lifestyle","yummy","flowers","tflers","hot","handmade","instafood","wedding","fit","black","pink","blue","workout","work","blackandwhite","drawing","inspiration","holiday","home","london","nyc","sea","instacool","winter","goodmorning","blessed",]
-        print("Dette er en loop")
-        bot.api.get_hashtag_stories(random.choice(hashtags))
-        json = bot.api.last_json
         try:
-            for w in json["story"]["items"]:
-                print(w["user"]["username"])
-                if bot.api.see_reels(w) == True:
-                    print(bot.api.see_reels(w))
-                    number += 1
-                    print("Story Watched. Total: " + str(number))
-                    time.sleep(15)
-                if bot.api.see_reels(w) == False:
-                    print(bot.api.see_reels(w))
-                    print("Falling asleep")
-                    time.sleep(200 + random.random())
-        except:
-            print("error")
-            pass
+            time.sleep(10)
+            # GET USER FEED
+            if not bot.api.get_user_feed(current_user_id):
+                bot.logger.info("Can't get feed of user_id=%s" % current_user_id)
+
+            # GET MEDIA LIKERS
+            user_media = random.choice(bot.api.last_json["items"])
+            if not bot.api.get_media_likers(media_id=user_media["pk"]):
+                bot.logger.info(
+                    "Can't get media likers of media_id='%s' by user_id='%s'" % (user_media["pk"], current_user_id)
+                )
+
+            likers = bot.api.last_json["users"]
+            liker_ids = [
+                str(u["pk"]) for u in likers if not u["is_private"] and "latest_reel_media" in u
+            ][:20]
+
+            # WATCH USERS STORIES
+            if bot.watch_users_reels(liker_ids):
+                bot.logger.info("Total stories viewed: %d" % bot.total["stories_viewed"])
+
+            # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
+            current_user_id = random.choice(liker_ids)
+
+            if random.random() < 0.05:
+                current_user_id = user_to_get_likers_of
+                bot.logger.info("Sleeping and returning back to original user_id=%s" % current_user_id)
+                time.sleep(60 * random.random() + 60)
+
+        except Exception as e:
+            # If something went wrong - sleep long and start again
+            bot.logger.info(e)
+            current_user_id = user_to_get_likers_of
+            time.sleep(260 * random.random() + 60)
+
 
 def like_self_media_comments():
     x = 0
@@ -54,6 +71,7 @@ def like_self_media_comments():
             time.sleep(120)
             print("Like comments on next picture")
             like_self_media_comments()
+
 
 def reply_pending_messages():
     reply_pending = 0
@@ -74,6 +92,7 @@ def reply_pending_messages():
         except:
             time.sleep(160)
             pass
+
 
 def reply_messages():
     replied = 0
@@ -98,11 +117,11 @@ def reply_messages():
 
 
 
-#thread1 = threading.Timer(5.0, watchstories)
+thread1 = threading.Timer(5.0, watchstories)
 thread2 = threading.Timer(3.0, like_self_media_comments)
 #thread3 = threading.Timer(7.0, reply_messages)
 thread4 = threading.Timer(10.0, reply_pending_messages)
-#thread1.start()
+thread1.start()
 thread2.start()
 #thread3.start()
 thread4.start()
