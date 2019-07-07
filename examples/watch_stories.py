@@ -2,10 +2,7 @@
     Watch user likers stories!
     This script could be very useful to attract
     someone's audience to your account.
-
-    If you will not specify the user_id, the script
-    will use your likers as targets.
-
+    
     Dependencies:
         pip install -U instabot
     Run:
