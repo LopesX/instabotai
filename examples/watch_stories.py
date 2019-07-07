@@ -88,8 +88,8 @@ while True:
                 total_stories += 2000
                 print("Total stories watched " + str(total_stories))
                 bot.total["stories_viewed"] = 0
-                print("sleeping for 180 sec")
-                time.sleep(310)
+                print("sleeping for 310 sec")
+                time.sleep(310 + random.random())
 
     # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
         current_user_id = random.choice(liker_ids)
@@ -99,16 +99,16 @@ while True:
             time.sleep(3 * random.random() + 1)
             error_sleep += 1
             if error_sleep == 3:
-                print("sleeping max random")
-                time.sleep(1380)
+                print("sleeping for 1780 seconds")
+                time.sleep(1780 + random.random())
 
     except Exception as e:
         # If something went wrong - sleep long and start again
         bot.logger.info(e)
         error_sleeps += 1
         if error_sleeps == 2:
-            print("sleeping max")
-            time.sleep(1380)
+            print("sleeping for 1780 seconds")
+            time.sleep(1780 + random.random())
 
         current_user_id = user_to_get_likers_of
         time.sleep(5 * random.random() + 5)
