@@ -141,6 +141,7 @@ def watch_stories():
 
 def like_self_media_comments():
     x = 0
+    y = 0
     while True:
         try:
             bot.api.get_total_self_user_feed(min_timestamp=None)
@@ -149,13 +150,16 @@ def like_self_media_comments():
             print("sleeping for 120 seconds")
             time.sleep(120)
             x += 1
+            y = 0
             print("Like comments on next picture")
         except:
             time.sleep(120)
             print("Like comments on next picture")
             x += 1
-
-
+            if y == 4:
+                x = 0
+                
+                
 thread1 = threading.Timer(7.0, watch_stories)
 thread2 = threading.Timer(13.0, reply_pending_messages)
 thread3 = threading.Timer(2.0, like_self_media_comments)
