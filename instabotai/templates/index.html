@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>InstabotAi Bot</title>
+  </head>
+  <body>
+    <div>
+    <p></p><h1>Instabot AI </h1>
+    <p></p><a href = http://instabotai.com>http://www.instabotai.com</a>
+    <p><i>Everything is stored on your own device, your information is safe</i>
+    <p>
+        <form action="/" method="get">
+          Username:<br />
+          <input type="text" name="username"><br />
+          Password:<br />
+          <input type="text" name="password"><br />
+          Profiles:<br />
+          <input type="text" name="profiles"><br />
+          Hashtags:<br />
+          <input type="text" name="hashtags"><br />
+
+          <input type="submit" value="submit">
+      </form>
+      {% if fooResponse is not none %}
+          {{ fooResponse }}
+      {% endif %}
+      
+ 
+      {% if cooResponse is not none %}
+          {{ cooResponse }}
+      {% endif %}
+    <p>
+      <p>{{ message }}
+      <p><h1>Log output</h1>
+      <form></form>
+    </div>
+  </body>
+</html>
