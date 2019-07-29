@@ -1,4 +1,4 @@
-![image](https://raw.githubusercontent.com/instagrambot/instabot.ai/master/img/banner.png)
+![image](https://raw.githubusercontent.com/instabotai/instabotai/master/img/banner.png)
 ---
 ### | [Website](https://instabotai.com/) | [Read the Docs](https://instabotai.github.io/docs/) | [Contribute](https://github.com/instagrambot/docs/blob/master/CONTRIBUTING.md) |
 
