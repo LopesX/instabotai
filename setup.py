@@ -23,9 +23,7 @@ setup(
     install_requires=[
         'tqdm>=4.30.0',
         'instabot',
-        'instagram-scraper>=1.6.1',
-        'face_recognition>=1.2.3'
-        'tensorflow==2.0.0rc0'
+        'tensorflow==2.0.0rc0',
         'flask'
     ],
     entry_points={
