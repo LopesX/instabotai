@@ -1,0 +1,1 @@
+from instabotai.app import *
