@@ -27,7 +27,7 @@ setup(
         'flask'
     ],
     entry_points={
-        'console_scripts': ['instabotai=run.py'],
+        'console_scripts': ['instabotai=instabotai:main'],
     },
     classifiers=[
         # How mature is this project? Common values are
