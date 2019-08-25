@@ -5,9 +5,9 @@
 ## How can I help the project?
 
 You can:
-* Put the star into the [Instabot main repository](https://github.com/instagrambotai). To do this, click on the star here https://github.com/instagrambot at top right corner. Mind that GitHub registration is required (for free).
-* Login to [Telegram Group](https://t.me/instabotproject) and help newcomers to understand the installation and configuration of Instabot. 
-* Tell everywhere about our project! It will be enough to throw off the link: https://instagrambot.github.io.
+* Put the star into the [Instabot main repository](https://github.com/instabotai). To do this, click on the star here https://github.com/instabotai at top right corner. Mind that GitHub registration is required (for free).
+* Login to [Telegram Group](https://t.me/instabotai) and help newcomers to understand the installation and configuration of Instabot. 
+* Tell everywhere about our project! It will be enough to throw off the link: https://instabotai.com
 * Find bugs and describe them in [Issues](https://github.com/instagrambot/instabotai/issues) section, be sure to attach the _screenshots_ and _commands_ that you entered. This will help correct these errors and make Instabot better!
 * If you are a developer, correct these bugs and errors! Do this via Pull Request, don't forget the PEP8 standard.
 * If you have a brilliant Instabot usage example or even the independent project connected with instagram, [tell us](https://t.me/instabotai) about it!
@@ -22,7 +22,7 @@ If you want to add a new documentation page in any language please follow the gu
 
 ## Translate the Docs into your language
 
-1. Fork the [repository](https://github.com/instagrambotai/instabot).
+1. Fork the [repository](https://github.com/instabotai/instabotai).
 2. Create a folder with the name of your country in the abbreviation.
 3. Copy all the files from the `/en/` folder to your earlier created folder.
 4. Translate the files into your language, leaving the file structure of the previous one (paragraphs etc).

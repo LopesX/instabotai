@@ -22,12 +22,14 @@ setup(
     keywords=['instagram', 'bot', 'api', 'wrapper'],
     install_requires=[
         'tqdm>=4.30.0',
-        'instabot>=0.49.0',
+        'instabot',
         'instagram-scraper>=1.6.1',
         'face_recognition>=1.2.3'
+        'tensorflow==2.0.0rc0'
+        'flask'
     ],
     entry_points={
-        'console_scripts': ['instabotai=instabotai:main'],
+        'console_scripts': ['instabotai=run.py'],
     },
     classifiers=[
         # How mature is this project? Common values are
