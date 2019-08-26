@@ -15,6 +15,9 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 
 ![image](https://i.imgur.com/yv9eAyv.png)
 
+### Requirements
+Python 3.5+ 64bit
+
 ### Installation 
 ``` bash
 git clone https://github.com/instabotai/instabotai.git
