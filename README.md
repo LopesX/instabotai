@@ -30,13 +30,14 @@ python run.py -u username -p password
 ```
 
 ## Features
+* Like Users Following Images with AI
+* Like Users Followers Images with AI
+* Like Hashtag Images AI
 * Follow User Followers
 * Follow User Following
 * Comment User Followers
 * Comment User Following
 * Watch Infinity Stories by user
-* Like Users Following Images with AI
-* Like Users Followers Images with AI
 * Like Hashtag Images
 * Like all image comments
 * Multibot
