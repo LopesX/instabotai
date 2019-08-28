@@ -11,6 +11,7 @@ COPY . /app
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y python3-pip
+RUN pip install -U pip
 
 # Install any needed packages specified in requirements.txt
  RUN pip install -r requirements.txt
