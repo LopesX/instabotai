@@ -27,6 +27,10 @@ git clone https://github.com/instabotai/instabotai.git
 pip install -U pip
 pip install -r requirements.txt
 python run.py -u username -p password
+
+If you only want to use CLI run:
+python cli.py -u username -p password
+
 ```
 
 ## Features
