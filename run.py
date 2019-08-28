@@ -33,35 +33,66 @@ username = str(args.u)
 bot.login(username=args.u, password=args.p, proxy=args.proxy, use_cookie=True)
 
 
-def face_detection(username):
-    x = 0
-    ''' Get user media and scan it for a face'''
-    user_id = bot.get_user_id_from_username(username)
-    medias = bot.get_user_medias(user_id, filtration=False)
-    for media in medias:
-        while x < 1:
-            try:
-                bot.logger.info(media)
-                path = bot.download_photo(media, folder=username)
-                img = cv2.imread(path)
-                detector = MTCNN()
-                detect = detector.detect_faces(img)
-                if not detect:
-                    bot.logger.info("no face detected")
+class Bots:
+    def __init__(self, username):
+        self.username = username
+
+    def face_detection(username):
+        x = 0
+        ''' Get user media and scan it for a face'''
+        user_id = bot.get_user_id_from_username(username)
+        medias = bot.get_user_medias(user_id, filtration=False)
+        for media in medias:
+            while x < 1:
+                try:
+                    bot.logger.info(media)
+                    path = bot.download_photo(media, folder=username)
+                    img = cv2.imread(path)
+                    detector = MTCNN()
+                    detect = detector.detect_faces(img)
+                    if not detect:
+                        bot.logger.info("no face detected")
+                        x += 1
+
+                    elif detect:
+                        bot.logger.info("there was a face detected")
+                        bot.api.like(media)
+                        display_url = bot.get_link_from_media_id(media)
+                        bot.logger.info("liked " + display_url + " by " + username)
+                        x += 1
+                    else:
+                        x += 1
+
+                except Exception as e:
+                    bot.logger.info(e)
                     x += 1
 
-                elif detect:
-                    bot.logger.info("there was a face detected")
-                    bot.api.like(media)
-                    display_url = bot.get_link_from_media_id(media)
-                    bot.logger.info("liked " + display_url + " by " + username)
-                    x += 1
-                else:
-                    x += 1
+    def like_followers(username, time_sleep):
+        user_id = bot.get_user_id_from_username(username)
+        followers = bot.get_user_followers(user_id)
 
-            except Exception as e:
-                bot.logger.info(e)
-                x += 1
+        for user in followers:
+            pusername = bot.get_username_from_user_id(user)
+            Bots.face_detection(pusername)
+            time.sleep(int(time_sleep))
+
+
+    def like_following(username, time_sleep):
+        user_id = bot.get_user_id_from_username(username)
+        following = bot.get_user_following(user_id)
+
+        for user in following:
+            pusername = bot.get_username_from_user_id(user)
+            Bots.face_detection(pusername)
+            time.sleep(int(time_sleep))
+
+    def like_hashtags(hashtag, time_sleep):
+        hashtags = bot.get_hashtag_users(hashtag)
+        for user in hashtags:
+            pusername = bot.get_username_from_user_id(user)
+            Bots.face_detection(pusername)
+            time.sleep(int(time_sleep))
+
 
 def get_followers():
     pass
@@ -179,6 +210,19 @@ def like_hashtags():
                            profile_pic=profile_pic, followers=followers,
                            following=following, media_count=media_count);
 
+@app.route("/like_hashtagsai")
+def like_hashtagsai():
+    bot.api.get_self_username_info()
+    profile_pic = bot.api.last_json["user"]["profile_pic_url"]
+    followers = bot.api.last_json["user"]["follower_count"]
+    following = bot.api.last_json["user"]["following_count"]
+    media_count = bot.api.last_json["user"]["media_count"]
+    hashtag = "fitness"
+
+    return render_template("like_hashtagsai.html", username=hashtag,
+                           profile_pic=profile_pic, followers=followers,
+                           following=following, media_count=media_count);
+
 @app.route("/follow_followers")
 def follow_followers():
     bot.api.get_self_username_info()
@@ -269,13 +313,7 @@ def start_like_followingai():
     number_last_photos = 1
     following_username = request.form['following_username']
     time_sleep = request.form['time_sleep']
-    user_id = bot.get_user_id_from_username(following_username)
-    following = bot.get_user_following(user_id)
-
-    for user in following:
-        pusername = bot.get_username_from_user_id(user)
-        face_detection(pusername)
-        time.sleep(int(time_sleep))
+    Bots.like_following(following_username, time_sleep)
     return render_template("like_followingai.html", username=username,
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
@@ -303,17 +341,29 @@ def start_like_followersai():
     following = bot.api.last_json["user"]["following_count"]
     media_count = bot.api.last_json["user"]["media_count"]
     number_last_photos = 1
-    following_username = request.form['following_username']
+    followers_username = request.form['following_username']
     time_sleep = request.form['time_sleep']
-    user_id = bot.get_user_id_from_username(following_username)
-    following = bot.get_user_followers(user_id)
-    for user in following:
-        pusername = bot.get_username_from_user_id(user)
-        face_detection(pusername)
-        time.sleep(int(time_sleep))
+    Bots.like_followers(followers_username, time_sleep)
     return render_template("like_followersai.html", username=username,
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
+
+@app.route("/start_like_hashtagsai", methods=['GET', 'POST'])
+def start_like_hashtagsai():
+    x = 0
+    bot.api.get_self_username_info()
+    profile_pic = bot.api.last_json["user"]["profile_pic_url"]
+    followers = bot.api.last_json["user"]["follower_count"]
+    following = bot.api.last_json["user"]["following_count"]
+    media_count = bot.api.last_json["user"]["media_count"]
+    number_last_photos = 1
+    hashtags = request.form['following_username']
+    time_sleep = request.form['time_sleep']
+    Bots.like_hashtags(hashtags, time_sleep)
+    return render_template("like_followersai.html", username=username,
+                       profile_pic=profile_pic, followers=followers,
+                       following=following, media_count=media_count);
+
 
 @app.route("/start_like_followers", methods=['GET', 'POST'])
 def start_like_followers():
