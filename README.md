@@ -30,6 +30,13 @@ python run.py -u username -p password
 
 If you only want to use CLI run:
 python cli.py -u username -p password
+```
+### Installation with docker
+
+``` bash
+git clone https://github.com/instabotai/instabotai.git
+docker build .
+sudo docker run -ti -p 8000:8000 YOURIMAGEID -u username -p password
 
 ```
 
