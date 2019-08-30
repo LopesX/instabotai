@@ -41,6 +41,15 @@ sudo docker run -ti -p 8000:8000 YOURIMAGEID -u username -p password
 
 ```
 
+### Installation with tensorflow 1.14+
+``` bash
+If your system does not support tensorflow 2.0.
+Delete mtcnn folder
+Download it trough pip: pip install mtcnn
+python run.py -u username -p password
+```
+
+
 ## Features
 * Like Users Following Images with AI
 * Like Users Followers Images with AI
