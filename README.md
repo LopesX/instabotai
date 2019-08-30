@@ -20,6 +20,19 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 * Microsoft Visual C++ 2015 Redistributable Update 3 
 * https://www.microsoft.com/en-us/download/details.aspx?id=53587 (Only required for Windows Users)
 
+## Features
+* Like Users Following Images with AI
+* Like Users Followers Images with AI
+* Like Hashtag Images AI
+* Follow User Followers
+* Follow User Following
+* Comment User Followers
+* Comment User Following
+* Watch Infinity Stories by user
+* Like Hashtag Images
+* Like all image comments
+* Multibot
+* GUI
 
 ### Installation 
 ``` bash
@@ -49,21 +62,6 @@ Download it trough pip: pip install mtcnn
 python run.py -u username -p password
 ```
 
-
-## Features
-* Like Users Following Images with AI
-* Like Users Followers Images with AI
-* Like Hashtag Images AI
-* Follow User Followers
-* Follow User Following
-* Comment User Followers
-* Comment User Following
-* Watch Infinity Stories by user
-* Like Hashtag Images
-* Like all image comments
-* Multibot
-* GUI
-
 ## Run: 
 python run.py -u yourusername -p yourpassword
 
@@ -71,7 +69,7 @@ Open http://127.0.0.1:8000/ in your browser
 
 Works on all browsers without extensions!
 
-
-### Arch:
+To install tensorflow on your system without pip.
+### Arch Linux:
 Pacman -S tensorflow
 
