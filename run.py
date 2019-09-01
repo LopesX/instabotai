@@ -67,6 +67,41 @@ class Bots:
                     bot.logger.info(e)
                     x += 1
 
+    def face_detection_comment(username, comment):
+        x = 0
+        ''' Get user media and scan it for a face'''
+        user_id = bot.get_user_id_from_username(username)
+        medias = bot.get_user_medias(user_id, filtration=False)
+        for media in medias:
+            while x < 1:
+                try:
+                    bot.logger.info(media)
+                    path = bot.download_photo(media, folder=username)
+                    img = cv2.imread(path)
+                    detector = MTCNN()
+                    detect = detector.detect_faces(img)
+                    if not detect:
+                        bot.logger.info("no face detected")
+                        x += 1
+
+                    elif detect:
+                        bot.logger.info("there was a face detected")
+                        bot.api.comment(media, comment)
+                        does_exist = bot.get_media_comments(media, only_text=True)
+                        if str(username) in does_exist:
+                            x += 1
+                            print("image has been commented")
+                        else:
+                            display_url = bot.get_link_from_media_id(media)
+                            bot.logger.info("commented " + display_url + " by " + username)
+                            x += 1
+                    else:
+                        x += 1
+
+                except Exception as e:
+                    bot.logger.info(e)
+                    x += 1
+
     def like_followers(username, time_sleep):
         user_id = bot.get_user_id_from_username(username)
         followers = bot.get_user_followers(user_id)
@@ -92,7 +127,7 @@ class Bots:
             pusername = bot.get_username_from_user_id(user)
             Bots.face_detection(pusername)
             time.sleep(int(time_sleep))
-            
+
     def comment(hashtag, comment, time_sleep):
         hashtags = bot.get_hashtag_users(hashtag)
         for user in hashtags:
