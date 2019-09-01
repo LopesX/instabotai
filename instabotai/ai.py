@@ -90,3 +90,10 @@ class Bots:
             pusername = bot.get_username_from_user_id(user)
             Bots.face_detection(pusername)
             time.sleep(int(time_sleep))
+            
+    def comment(hashtag, comment, time_sleep):
+        hashtags = bot.get_hashtag_users(hashtag)
+        for user in hashtags:
+            pusername = bot.get_username_from_user_id(user)
+            Bots.face_detection_comment(pusername, comment)
+            time.sleep(int(time_sleep))
