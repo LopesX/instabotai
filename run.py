@@ -92,6 +92,13 @@ class Bots:
             pusername = bot.get_username_from_user_id(user)
             Bots.face_detection(pusername)
             time.sleep(int(time_sleep))
+            
+    def comment(hashtag, comment, time_sleep):
+        hashtags = bot.get_hashtag_users(hashtag)
+        for user in hashtags:
+            pusername = bot.get_username_from_user_id(user)
+            Bots.face_detection_comment(pusername, comment)
+            time.sleep(int(time_sleep))
 
 
 def get_followers():
@@ -343,7 +350,7 @@ def start_comment_hashtagsai():
     hashtags = request.form['following_username']
     comment = request.form['comment']
     time_sleep = request.form['time_sleep']
-    ai.Bots.comment(hashtags, comment, time_sleep)
+    Bots.comment(hashtags, comment, time_sleep)
     return render_template("like_followersai.html", username=username,
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
