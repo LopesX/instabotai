@@ -318,6 +318,37 @@ def start_like_followingai():
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
 
+@app.route("/comment_hashtagai")
+def comment_hashtag_ai():
+    bot.api.get_self_username_info()
+    profile_pic = bot.api.last_json["user"]["profile_pic_url"]
+    followers = bot.api.last_json["user"]["follower_count"]
+    following = bot.api.last_json["user"]["following_count"]
+    media_count = bot.api.last_json["user"]["media_count"]
+    main_comment = "hello awesome profile"
+    return render_template("comment_hashtagai.html", username=username,
+                           profile_pic=profile_pic, followers=followers,
+                           following=following, media_count=media_count,
+                           main_comment=main_comment);
+
+@app.route("/start_comment_hashtagsai", methods=['GET', 'POST'])
+def start_comment_hashtagsai():
+    x = 0
+    bot.api.get_self_username_info()
+    profile_pic = bot.api.last_json["user"]["profile_pic_url"]
+    followers = bot.api.last_json["user"]["follower_count"]
+    following = bot.api.last_json["user"]["following_count"]
+    media_count = bot.api.last_json["user"]["media_count"]
+    number_last_photos = 1
+    hashtags = request.form['following_username']
+    comment = request.form['comment']
+    time_sleep = request.form['time_sleep']
+    ai.Bots.comment(hashtags, comment, time_sleep)
+    return render_template("like_followersai.html", username=username,
+                       profile_pic=profile_pic, followers=followers,
+                       following=following, media_count=media_count);
+
+
 @app.route("/start_like_following", methods=['GET', 'POST'])
 def start_like_following():
     bot.api.get_self_username_info()
