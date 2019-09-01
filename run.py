@@ -67,6 +67,10 @@ class Bots:
                     bot.logger.info(e)
                     x += 1
 
+    def increament_y():
+        yz += 1
+        return print(str(yz))
+
     def face_detection_comment(username, comment):
         x = 0
         ''' Get user media and scan it for a face'''
@@ -129,11 +133,15 @@ class Bots:
             time.sleep(int(time_sleep))
 
     def comment(hashtag, comment, time_sleep):
-        hashtags = bot.get_hashtag_users(hashtag)
-        for user in hashtags:
-            pusername = bot.get_username_from_user_id(user)
-            Bots.face_detection_comment(pusername, comment)
-            time.sleep(int(time_sleep))
+        while True:
+            hashtags = bot.get_hashtag_users(hashtag)
+            for user in hashtags:
+                y = 0
+                pusername = bot.get_username_from_user_id(user)
+                Bots.face_detection_comment(pusername, comment)
+                y += 1
+                print(y)
+                time.sleep(int(time_sleep))
 
 
 def get_followers():
