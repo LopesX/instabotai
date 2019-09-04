@@ -29,3 +29,6 @@
 # with the python modules ``pickle``, ``dbm.*``,
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
 # (among others).
+
+# disable html
+templates/* linguist-vendored
