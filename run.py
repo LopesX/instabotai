@@ -262,7 +262,10 @@ class Bots(object):
     def activate_code(code):
         if code == "AAAEASDCCF" :
             points = Bots.get_points()
+            points = int(points)
+
             points += 5000
+            points = str(points)
             print("You have activated your code")
             with open("x.txt", "w+") as f:
                 f.write(points)
@@ -270,7 +273,10 @@ class Bots(object):
 
         elif code == "BBBSDRGTY" :
             points = Bots.get_points()
+            points = int(points)
+
             points += 10000
+            points = str(points)
             with open("x.txt", "w+") as f:
                 f.write(points)
             print("You have activated your code")
