@@ -529,7 +529,7 @@ def start_comment_hashtagsai():
     hashtags = request.form['following_username']
     comment = request.form['comment']
     time_sleep = request.form['time_sleep']
-    Bots.comment(hashtags, comment, time_sleep)
+    Bots.user_hashtag_comment(hashtags, comment, time_sleep)
     return render_template("like_followersai.html", username=username,
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
