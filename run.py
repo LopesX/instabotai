@@ -262,16 +262,23 @@ class Bots(object):
     def activate_code(code):
         if code == "AAAEASDCCF" :
             points = Bots.get_points()
-            points += 1000
+            points += 5000
             print("You have activated your code")
+            with open("x.txt", "w+") as f:
+                f.write(points)
+            print("You have activated your code")
+
         elif code == "BBBSDRGTY" :
             points = Bots.get_points()
-            points += 1000
+            points += 10000
+            with open("x.txt", "w+") as f:
+                f.write(points)
             print("You have activated your code")
+
         elif code == "CCCAASDRT" :
             points = Bots.get_points()
             points = int(points)
-            points = points + 1000
+            points = points + 60000
             points = str(points)
             print(points)
             with open("x.txt", "w+") as f:
@@ -299,6 +306,31 @@ def index():
     return render_template("index.html", username=username,
                            profile_pic=profile_pic, followers=followers,
                            following=following, media_count=media_count);
+
+@app.route("/activate")
+def activate():
+    bot.api.get_self_username_info()
+    profile_pic = bot.api.last_json["user"]["profile_pic_url"]
+    followers = bot.api.last_json["user"]["follower_count"]
+    following = bot.api.last_json["user"]["following_count"]
+    media_count = bot.api.last_json["user"]["media_count"]
+    return render_template("activate.html", username=username,
+                           profile_pic=profile_pic, followers=followers,
+                           following=following, media_count=media_count);
+
+@app.route("/start_activate", methods=['GET', 'POST'])
+def start_activate():
+    x = 0
+    bot.api.get_self_username_info()
+    profile_pic = bot.api.last_json["user"]["profile_pic_url"]
+    followers = bot.api.last_json["user"]["follower_count"]
+    following = bot.api.last_json["user"]["following_count"]
+    media_count = bot.api.last_json["user"]["media_count"]
+    code = request.form['code']
+    Bots.activate_code(code)
+    return render_template("activate.html", username=username,
+                       profile_pic=profile_pic, followers=followers,
+                       following=following, media_count=media_count);
 
 @app.route("/like_comments")
 def like_comments():
