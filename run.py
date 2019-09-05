@@ -248,7 +248,7 @@ class Bots(object):
     def payment_system():
         points = Bots.get_points()
         print("You Have :" + str(points) + " coins left")
-        increase = open("x.txt", "w")
+        increase = open("x.txt", "w+")
         points = int(points)
         points -= 1
         if points < 0 :
