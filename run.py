@@ -263,7 +263,6 @@ class Bots(object):
         if code == "AAAEASDCCF" :
             points = Bots.get_points()
             points = int(points)
-
             points += 5000
             points = str(points)
             print("You have activated your code")
@@ -274,7 +273,6 @@ class Bots(object):
         elif code == "BBBSDRGTY" :
             points = Bots.get_points()
             points = int(points)
-
             points += 10000
             points = str(points)
             with open("x.txt", "w+") as f:
