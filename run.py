@@ -33,9 +33,9 @@ username = str(args.u)
 bot.login(username=args.u, password=args.p, proxy=args.proxy, use_cookie=True)
 
 
-class Bots:
-    def __init__(self, username):
-        self.username = username
+class Bots(object):
+    def __init__(self):
+        self.points = 1000
 
     def face_detection(username):
         x = 0
@@ -51,7 +51,7 @@ class Bots:
                     detector = MTCNN()
                     detect = detector.detect_faces(img)
                     if not detect:
-                        bot.logger.info("no face detected")
+                        bot.logger.info("no face detected " + bot.get_link_from_media_id(media))
                         x += 1
 
                     elif detect:
@@ -59,6 +59,7 @@ class Bots:
                         bot.api.like(media)
                         display_url = bot.get_link_from_media_id(media)
                         bot.logger.info("liked " + display_url + " by " + username)
+                        Bots.payment_system()
                         x += 1
                     else:
                         x += 1
@@ -67,9 +68,42 @@ class Bots:
                     bot.logger.info(e)
                     x += 1
 
-    def increament_y():
-        yz += 1
-        return print(str(yz))
+
+    def face_detection_repost(username, caption):
+        x = 0
+        ''' Get user media and scan it for a face'''
+        user_id = bot.get_user_id_from_username(username)
+        medias = bot.get_user_medias(user_id, filtration=False)
+        for media in medias:
+            while x < 1:
+                try:
+                    bot.logger.info(media)
+                    path = bot.download_photo(media, folder=username)
+                    img = cv2.imread(path)
+                    detector = MTCNN()
+                    detect = detector.detect_faces(img)
+                    if not detect:
+                        bot.logger.info("no face detected " + bot.get_link_from_media_id(media))
+                        x += 1
+
+                    elif detect:
+                        bot.logger.info("there was a face detected")
+                        bot.api.upload_photo(path, caption=caption)
+                        does_exist = bot.get_media_comments(media, only_text=True)
+                        if str(username) in does_exist:
+                            x += 1
+                            print("image has been commented")
+                        else:
+                            display_url = bot.get_link_from_media_id(media)
+                            bot.logger.info("reposted " + display_url + " by " + username)
+                            Bots.payment_system()
+                            x += 1
+                    else:
+                        x += 1
+
+                except Exception as e:
+                    bot.logger.info(e)
+                    x += 1
 
     def face_detection_comment(username, comment):
         x = 0
@@ -85,7 +119,7 @@ class Bots:
                     detector = MTCNN()
                     detect = detector.detect_faces(img)
                     if not detect:
-                        bot.logger.info("no face detected")
+                        bot.logger.info("no face detected " + bot.get_link_from_media_id(media))
                         x += 1
 
                     elif detect:
@@ -98,6 +132,7 @@ class Bots:
                         else:
                             display_url = bot.get_link_from_media_id(media)
                             bot.logger.info("commented " + display_url + " by " + username)
+                            Bots.payment_system()
                             x += 1
                     else:
                         x += 1
@@ -132,17 +167,118 @@ class Bots:
             Bots.face_detection(pusername)
             time.sleep(int(time_sleep))
 
-    def comment(hashtag, comment, time_sleep):
+    def user_hashtag_comment(hashtag, comment, time_sleep):
+        '''
+        comment a user hashtags
+        @params: hashtag (string),
+        @params: comment (sting),
+        @params: time_sleep (int),
+        '''
         while True:
-            hashtags = bot.get_hashtag_users(hashtag)
-            for user in hashtags:
-                y = 0
-                pusername = bot.get_username_from_user_id(user)
-                Bots.face_detection_comment(pusername, comment)
-                y += 1
-                print(y)
-                time.sleep(int(time_sleep))
+            hashtags = Bots.convert_usernames_to_list(hashtag)
+            for hashtag in hashtags:
+                hashtags = bot.get_hashtag_users(hashtag)
+                for user in hashtags:
+                    pusername = bot.get_username_from_user_id(user)
+                    Bots.face_detection_comment(pusername, comment)
+                    time.sleep(int(time_sleep))
 
+    def media_hashtag_comment(hashtags, comment, time_sleep):
+        '''
+        comment a media hashtags
+        @params: hashtags (string),
+        @params: comment[sting),
+        @params: time_sleep(int),
+        '''
+        while True:
+            hashtags = Bots.convert_usernames_to_list(hashtags)
+            for hashtag in hashtags:
+                hashtags = bot.get_total_hashtag_medias(hashhtag)
+                for user in hashtags:
+                    pusername = bot.get_username_from_user_id(user)
+                    Bots.face_detection_comment(pusername, comment)
+                    time.sleep(int(time_sleep))
+
+    def unfollow_users():
+        bot.unfollow_everyone()
+
+    def convert_usernames_to_list(usernames):
+        newlist = []
+        ''' convert usernames or hashtags to a list '''
+        try:
+            for username in usernames.split(", "):
+                newlist.append(username)
+            list_usernames = newlist
+
+        except:
+            for username in usernames.split(","):
+                newlist.append(username)
+            list_usernames = newlist
+
+        else:
+            usernames = list_usernames
+        return list_usernames
+
+    def repost_users_images(usernames, caption, time_sleep):
+        '''
+        get users images and repost them
+        @params: usernames (string),
+        @params: caption (sting),
+        @params: time_sleep(int),
+        '''
+        print(usernames)
+        Usernames = Bots.convert_usernames_to_list(usernames)
+        print(Usernames)
+        for username in Usernames:
+            Bots.face_detection_repost(username, caption)
+            time.sleep(time_sleep)
+
+    def get_points():
+        points = open("x.txt", "r")
+        print("points")
+        output = points.read()
+        points.close()
+        points = output
+        return points
+
+    def stop():
+        print("Buy More Coins Here: https://www.patreon.com/instabotai")
+        exit()
+
+    def payment_system():
+        points = Bots.get_points()
+        print("You Have :" + str(points) + " coins left")
+        increase = open("x.txt", "w")
+        points = int(points)
+        points -= 1
+        if points < 0 :
+            print("Buy More Coins Here: https://www.patreon.com/instabotai")
+            Bots.stop()
+        increase.write(str(points))
+        increase.close()
+        print("=" * 30)
+        print("Buy More Coins Here: https://www.patreon.com/instabotai")
+
+    def activate_code(code):
+        if code == "AAAEASDCCF" :
+            points = Bots.get_points()
+            points += 1000
+            print("You have activated your code")
+        elif code == "BBBSDRGTY" :
+            points = Bots.get_points()
+            points += 1000
+            print("You have activated your code")
+        elif code == "CCCAASDRT" :
+            points = Bots.get_points()
+            points = int(points)
+            points = points + 1000
+            points = str(points)
+            print(points)
+            with open("x.txt", "w+") as f:
+                f.write(points)
+            print("You have activated your code")
+        else:
+            print("wrong code")
 
 def get_followers():
     pass
