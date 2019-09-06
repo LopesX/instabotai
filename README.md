@@ -8,7 +8,7 @@
  [![Build Status](https://travis-ci.org/instagrambot/instabot.svg?branch=master)](https://travis-ci.org/instagrambot/instabotai)
 ![Python 2.7, 3.5, 3.6, 3.7](https://img.shields.io/badge/python-2.7%2C%203.5%2C%203.6%2C%203.7-blue.svg)
 
-# InstabotAi
+# InstabotAI
 
 Instabotai is an instagram bot with face detection that uses the undocumented Web API. Instabotai can reupload photo to feed, reupload photo to stories, watch stories, comment, like and DM users if a face is detected on image.
 Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead, it interacts with the API over simple HTTP Requests. It runs on most systems.
