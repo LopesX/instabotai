@@ -16,7 +16,7 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 ![image](https://i.imgur.com/yv9eAyv.png)
 
 ### Requirements
-* Python 3.5+ 64bit
+* Python 3.7+ 64bit
 * Microsoft Visual C++ 2015 Redistributable Update 3 
 * https://www.microsoft.com/en-us/download/details.aspx?id=53587 (Only required for Windows Users)
 
@@ -35,8 +35,10 @@ Unlike other bots, Instabotai does not require Selenium or a WebDriver. Instead,
 * GUI
 
 ### Installation 
+Python 3.7+ 64bit - https://www.python.org/ftp/python/3.7.4/python-3.7.4-amd64.exe - Enable ADD TO PATH
+https://www.microsoft.com/en-us/download/details.aspx?id=53587 (Only required for Windows Users)
 ``` bash
-git clone https://github.com/instabotai/instabotai.git
+git clone https://github.com/instabotai/instabotai.git or Click Download Above
 pip install -U pip
 pip install -r requirements.txt
 python run.py -u username -p password
@@ -54,7 +56,7 @@ sudo docker run -ti -p 8000:8000 YOURIMAGEID -u username -p password
 
 ```
 
-### Installation with tensorflow 1.14+
+### Installation with tensorflow 1.14 or Python 32 bit+
 ``` bash
 If your system does not support tensorflow 2.0.
 Delete mtcnn folder
