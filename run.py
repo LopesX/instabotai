@@ -279,8 +279,9 @@ def comment_hashtag_ai():
     followers = ai.bot.api.last_json["user"]["follower_count"]
     following = ai.bot.api.last_json["user"]["following_count"]
     media_count = ai.bot.api.last_json["user"]["media_count"]
-    main_comment = "hello awesome profile"
-    return render_template("comment_hashtagai.html", username=username,
+    pre_hashtag = "fitness, follow4follow"
+    main_comment = "hello awesome profile, wow nice profile, follow me pls"
+    return render_template("comment_hashtagai.html", username=pre_hashtag,
                            profile_pic=profile_pic, followers=followers,
                            following=following, media_count=media_count,
                            main_comment=main_comment);
