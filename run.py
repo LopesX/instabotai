@@ -253,13 +253,15 @@ class Bots(object):
         points = int(points)
         points -= 1
         if points < 0 :
-            print("Buy More Coins Here: https://www.patreon.com/instabotai")
+            print("Buy 20.000 more COINS send 0.001 BTC to 12R5b4rLyNL8cC2HYQi5NpdPNaaAxPnmfe")
+            print("To get key when bought talk to us here: https://web.telegram.org/#/im?p=@instabotai")
             Bots.stop()
         increase.write(str(points))
         increase.close()
         print("=" * 30)
-        print("Buy More Coins Here: https://www.patreon.com/instabotai")
-
+        print("Buy 20.000 more COINS send 0.001 BTC to 12R5b4rLyNL8cC2HYQi5NpdPNaaAxPnmfe")
+        print("To get key when bought talk to us here: https://web.telegram.org/#/im?p=@instabotai")
+        
     def activate_code(code):
         if code == "AAAEASDCCF" :
             points = Bots.get_points()
@@ -274,7 +276,7 @@ class Bots(object):
         elif code == "BBBSDRGTY" :
             points = Bots.get_points()
             points = int(points)
-            points += 10000
+            points += 20000
             points = str(points)
             with open("x.txt", "w+") as f:
                 f.write(points)
