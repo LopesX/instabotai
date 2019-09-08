@@ -242,7 +242,8 @@ class Bots(object):
         return points
 
     def stop():
-        print("Buy More Coins Here: https://www.patreon.com/instabotai")
+        print("Buy 20.000 more COINS send 0.001 BTC to 12R5b4rLyNL8cC2HYQi5NpdPNaaAxPnmfe")
+        print("To get key when bought talk to us here: https://web.telegram.org/#/im?p=@instabotai")
         exit()
 
     def payment_system():
