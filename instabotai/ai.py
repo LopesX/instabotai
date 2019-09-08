@@ -121,6 +121,8 @@ class Bots(object):
                         x += 1
 
                     elif detect:
+                        comment = Bots.convert_usernames_to_list(comment)
+                        comment = random.choice(comment)
                         bot.logger.info("there was a face detected")
                         bot.api.comment(media, comment)
                         does_exist = bot.get_media_comments(media, only_text=True)
@@ -259,7 +261,7 @@ class Bots(object):
         print("=" * 30)
         print("Buy 20.000 more COINS send 0.001 BTC to 12R5b4rLyNL8cC2HYQi5NpdPNaaAxPnmfe")
         print("To get key when bought talk to us here: https://web.telegram.org/#/im?p=@instabotai")
-        
+
     def activate_code(code):
         if code == "AAAEASDCCF" :
             points = Bots.get_points()
