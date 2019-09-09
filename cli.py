@@ -21,7 +21,7 @@ username = str(args.u)
 # Check if user cookie exist
 bot.login(username=args.u, password=args.p, proxy=args.proxy, use_cookie=True)
 
-ai.Bots.follow_users_ai("japanheaven", None)
+ai.Bots.follow_users_ai("japanheaven", 4)
 #ai.Bots.user_hashtag_comment("fitness, models, friends", "wow please follow me back, wow nice profile, awesome profile", 10)
 #ai.Bots.like_hashtags("model", 4)
 #ai.Bots.like_following("japanheaven", 20)

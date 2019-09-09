@@ -283,7 +283,7 @@ class Bots(object):
         else:
             print("wrong code")
 
-    def follow_users_ai(username, amount):
+    def follow_users_ai(username, time_sleep):
         user_id = bot.get_user_id_from_username(username)
         followers = bot.api.get_total_followers(user_id, amount=None)
         for user_id in followers:
@@ -291,5 +291,5 @@ class Bots(object):
             user_id = bot.get_user_id_from_username(username)
             print(bot.api.follow(user_id))
             print("followed " + username)
-            time.sleep(6)
+            time.sleep(time_sleep)
 
