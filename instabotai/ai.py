@@ -103,6 +103,42 @@ class Bots(object):
                     bot.logger.info(e)
                     x += 1
 
+    def face_detection_follow(username):
+        x = 0
+        ''' Get user media and scan it for a face'''
+        user_id = bot.get_user_id_from_username(username)
+        medias = bot.get_user_medias(user_id, filtration=False)
+        for media in medias:
+            while x < 1:
+                try:
+                    bot.logger.info(media)
+                    path = bot.download_photo(media, folder=username)
+                    img = cv2.imread(path)
+                    detector = MTCNN()
+                    detect = detector.detect_faces(img)
+                    if not detect:
+                        bot.logger.info("no face detected " + bot.get_link_from_media_id(media))
+                        x += 1
+
+                    elif detect:
+                        bot.logger.info("there was a face detected")
+                        bot.api.follow(user_id)
+                        does_exist = bot.get_media_comments(media, only_text=True)
+                        if str(username) in does_exist:
+                            x += 1
+                            bot.logger.info("user has been followed")
+                        else:
+                            display_url = bot.get_link_from_media_id(media)
+                            bot.logger.info("followed " +  username)
+                            Bots.payment_system()
+                            x += 1
+                    else:
+                        x += 1
+
+                except Exception as e:
+                    bot.logger.info(e)
+                    x += 1
+
     def face_detection_comment(username, comment):
         x = 0
         ''' Get user media and scan it for a face'''
@@ -283,13 +319,34 @@ class Bots(object):
         else:
             print("wrong code")
 
-    def follow_users_ai(username, time_sleep):
-        user_id = bot.get_user_id_from_username(username)
-        followers = bot.api.get_total_followers(user_id, amount=None)
-        for user_id in followers:
-            username = user_id["username"]
-            user_id = bot.get_user_id_from_username(username)
-            print(bot.api.follow(user_id))
-            print("followed " + username)
-            time.sleep(time_sleep)
+    def follow_users_following_ai(username, time_sleep):
+        while True:
+            username = Bots.convert_usernames_to_list(username)
+            for user in username:
+                user_id = bot.get_user_id_from_username(user)
+                followings = bot.get_user_following(user_id)
+                for user_id in followings:
+                    username = bot.get_username_from_user_id(user_id)
+                    Bots.face_detection_follow(username)
+                    time.sleep(time_sleep)
 
+    def follow_users_followers_ai(username, time_sleep):
+        while True:
+            username = Bots.convert_usernames_to_list(username)
+            for user in username:
+                user_id = bot.get_user_id_from_username(user)
+                followers = bot.get_user_followers(user_id)
+                for user_id in followers:
+                    username = bot.get_username_from_user_id(user_id)
+                    Bots.face_detection_follow(username)
+                    time.sleep(time_sleep)
+
+    def follow_users_hashtag_ai(hashtag, time_sleep):
+        while True:
+            hashtags = Bots.convert_usernames_to_list(hashtag)
+            for hashtag in hashtags:
+                hashtags = bot.get_hashtag_users(hashtag)
+                for user in hashtags:
+                    username = bot.get_username_from_user_id(user)
+                    Bots.face_detection_follow(username)
+                    time.sleep(time_sleep)
