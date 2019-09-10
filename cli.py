@@ -20,7 +20,7 @@ username = str(args.u)
 
 # Check if user cookie exist
 bot.login(username=args.u, password=args.p, proxy=args.proxy, use_cookie=True)
-#ai.Bots.follow_users_hashtag_ai("joerogan, programming", 5)
+#ai.Bots.follow_users_hashtag_ai("fitness, programming", 5)
 #ai.Bots.follow_users_followers_ai("japenhaven", 20)
 ai.Bots.follow_users_following_ai("japanheaven", 20)
 #ai.Bots.follow_users_ai("japanheaven", 20)
