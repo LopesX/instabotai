@@ -10,6 +10,7 @@ except NameError:
 COOKIES = {}
 bot = ai.Bot(do_logout=True)
 
+# Parse info from terminal
 parser = argparse.ArgumentParser(add_help=True)
 parser.add_argument('-u', type=str, help="username")
 parser.add_argument('-p', type=str, help="password")
@@ -18,7 +19,7 @@ args = parser.parse_args()
 username = str(args.u)
 
 
-# Check if user cookie exist
+# Login
 bot.login(username=args.u, password=args.p, proxy=args.proxy, use_cookie=True)
 #ai.Bots.follow_users_hashtag_ai("fitness, programming", 5)
 #ai.Bots.follow_users_followers_ai("japenhaven", 20)
