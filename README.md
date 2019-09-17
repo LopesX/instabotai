@@ -39,7 +39,7 @@ Python 3.7+ 64bit - https://www.python.org/ftp/python/3.7.4/python-3.7.4-amd64.e
 https://www.microsoft.com/en-us/download/details.aspx?id=53587 (Only required for Windows Users)
 ``` bash
 git clone https://github.com/instabotai/instabotai.git or Click Download Above
-cd yourlocation/instabotai
+cd instabotai
 pip install -U pip
 pip install -r requirements.txt
 python run.py -u username -p password
