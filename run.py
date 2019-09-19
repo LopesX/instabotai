@@ -372,9 +372,11 @@ def start_follow_followers():
     followers = ai.bot.api.last_json["user"]["follower_count"]
     following = ai.bot.api.last_json["user"]["following_count"]
     media_count = ai.bot.api.last_json["user"]["media_count"]
-
+    time_sleep = request.form['time_sleep']
+    time_sleep = int(time_sleep)
     followers_username = request.form['followers_username']
-    ai.bot.follow_followers(followers_username)
+#    ai.bot.follow_followers(followers_username)
+    ai.Bots.follow_users_followers_ai(followers_username, time_sleep)
     return render_template("follow_followers.html", username=username,
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
@@ -386,9 +388,11 @@ def start_follow_following():
     followers = ai.bot.api.last_json["user"]["follower_count"]
     following = ai.bot.api.last_json["user"]["following_count"]
     media_count = ai.bot.api.last_json["user"]["media_count"]
-
+    time_sleep = request.form['time_sleep']
+    time_sleep = int(time_sleep)
     followers_username = request.form['followers_username']
-    ai.bot.follow_following(followers_username)
+    ai.Bots.follow_users_following_ai(followers_username, time_sleep)
+#    ai.bot.follow_following(followers_username)
     return render_template("follow_followings.html", username=username,
                        profile_pic=profile_pic, followers=followers,
                        following=following, media_count=media_count);
