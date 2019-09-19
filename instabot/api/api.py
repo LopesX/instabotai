@@ -60,6 +60,7 @@ class API(object):
         self.logger.addHandler(fh)
         self.logger.addHandler(ch)
         self.logger.setLevel(logging.DEBUG)
+        self.logger.propagate = False
 
         self.last_json = None
 
